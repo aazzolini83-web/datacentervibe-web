@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Center Vibe Lab | AI-Powered DCIM Suite</title>
+    <title>Data Center Vibe | AI-Powered Infrastructure Scope Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-main: #030712;
-            --bg-card: rgba(17, 24, 39, 0.7);
-            --border-card: rgba(55, 65, 81, 0.5);
+            --bg-main: #020617;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --border-card: rgba(51, 65, 85, 0.6);
             --accent-cyan: #06b6d4;
             --accent-blue: #3b82f6;
-            --accent-glow: rgba(6, 182, 212, 0.15);
-            --text-main: #f9fafb;
-            --text-muted: #9ca3af;
+            --accent-emerald: #10b981;
+            --accent-purple: #a855f7;
+            --accent-glow: rgba(6, 182, 212, 0.25);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-main);
@@ -25,96 +28,138 @@
             line-height: 1.6;
             min-height: 100vh;
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
-                linear-gradient(to right, rgba(31, 41, 55, 0.2) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(31, 41, 55, 0.2) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
+                radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.15) 0%, transparent 55%),
+                linear-gradient(to right, rgba(30, 41, 59, 0.25) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(30, 41, 59, 0.25) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
-        /* Header UI */
+        /* Powerful Header & Logo */
         header {
-            border-bottom: 1px solid var(--border-card);
-            background: rgba(3, 7, 18, 0.8);
-            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(16px);
             position: sticky; top: 0; z-index: 100;
         }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
-        .logo { font-size: 1.25rem; font-weight: 800; tracking-tight: -0.02em; display: flex; align-items: center; gap: 10px; }
-        .logo-icon {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: #000; width: 36px; height: 36px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        
+        /* Logo con presencia imponente */
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            letter-spacing: -0.03em; 
+            display: flex; 
+            align-items: center; 
+            gap: 14px; 
+            text-transform: uppercase;
         }
-        nav { display: flex; gap: 28px; align-items: center; font-size: 0.9rem; font-weight: 500; }
+        .logo-icon {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: #020617; 
+            width: 46px; 
+            height: 46px; 
+            border-radius: 12px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.4rem;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .logo-text span { color: var(--accent-cyan); text-shadow: 0 0 12px rgba(6, 182, 212, 0.5); }
+
+        nav { display: flex; gap: 32px; align-items: center; font-size: 0.95rem; font-weight: 600; }
         nav a { color: var(--text-muted); text-decoration: none; transition: 0.2s; }
         nav a:hover { color: var(--accent-cyan); }
-        .btn-connect {
-            background: rgba(6, 182, 212, 0.1); border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan); padding: 8px 18px; border-radius: 8px;
-            font-weight: 600; transition: all 0.3s;
+        
+        .btn-linkedin {
+            background: rgba(6, 182, 212, 0.1); 
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan); 
+            padding: 10px 22px; 
+            border-radius: 10px;
+            font-weight: 700; 
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
         }
-        .btn-connect:hover { background: var(--accent-cyan); color: #000; boxShadow: 0 0 15px var(--accent-cyan); }
+        .btn-linkedin:hover { 
+            background: var(--accent-cyan); 
+            color: #020617; 
+            box-shadow: 0 0 25px var(--accent-cyan); 
+            transform: translateY(-2px);
+        }
 
-        /* Hero & Terminal Grid */
-        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 80px 0; }
-        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+        /* Hero & Grid */
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; padding: 80px 0 60px; }
+        @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
 
         .badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3);
-            color: var(--accent-cyan); padding: 6px 14px; border-radius: 99px;
-            font-size: 0.8rem; font-weight: 600; margin-bottom: 20px;
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.35);
+            color: var(--accent-cyan); padding: 8px 18px; border-radius: 99px;
+            font-size: 0.85rem; font-weight: 700; margin-bottom: 24px;
+            letter-spacing: 0.05em; text-transform: uppercase;
         }
-        .pulse-dot { width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; box-shadow: 0 0 8px var(--accent-cyan); }
+        .pulse-dot { width: 9px; height: 9px; background: var(--accent-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--accent-cyan); }
 
-        h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
-        .gradient-txt { background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-size: 3.4rem; font-weight: 900; line-height: 1.1; margin-bottom: 22px; letter-spacing: -0.02em; }
+        .gradient-txt { background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .hero-sub { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 32px; }
+        .hero-sub { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 36px; max-width: 600px; }
 
-        /* Interactive Vibe Terminal */
+        /* Terminal UI */
         .terminal {
-            background: #090d16; border: 1px solid rgba(6, 182, 212, 0.3);
-            border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            background: #030712; border: 1px solid rgba(6, 182, 212, 0.35);
+            border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
         }
         .terminal-header {
-            background: #111827; padding: 10px 16px; display: flex; gap: 8px; align-items: center;
+            background: #0f172a; padding: 12px 20px; display: flex; gap: 8px; align-items: center;
             border-bottom: 1px solid var(--border-card);
         }
         .t-dot { width: 12px; height: 12px; border-radius: 50%; }
         .t-red { background: #ef4444; } .t-yellow { background: #f59e0b; } .t-green { background: #10b981; }
-        .t-title { margin-left: auto; font-family: monospace; font-size: 0.75rem; color: var(--text-muted); }
-        .terminal-body { padding: 20px; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #38bdf8; }
-        .cmd-line { margin-bottom: 10px; }
+        .t-title { margin-left: auto; font-family: monospace; font-size: 0.8rem; color: var(--text-muted); }
+        .terminal-body { padding: 24px; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.88rem; color: #38bdf8; }
+        .cmd-line { margin-bottom: 12px; }
         .cmd-prompt { color: #818cf8; }
-        .cmd-out { color: #d1d5db; margin-left: 14px; margin-bottom: 8px; }
+        .cmd-out { color: #cbd5e1; margin-left: 16px; margin-bottom: 8px; }
 
-        /* Modern Cards Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; padding: 40px 0 100px; }
+        /* Scope Cards Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; padding: 40px 0 100px; }
         .card {
             background: var(--bg-card); border: 1px solid var(--border-card);
-            border-radius: 16px; padding: 32px; backdrop-filter: blur(8px);
-            transition: all 0.3s ease; position: relative; overflow: hidden;
+            border-radius: 20px; padding: 36px; backdrop-filter: blur(12px);
+            transition: all 0.35s ease; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
         .card:hover {
-            transform: translateY(-5px); border-color: var(--accent-cyan);
-            box-shadow: 0 10px 30px var(--accent-glow);
+            transform: translateY(-8px); border-color: var(--accent-cyan);
+            box-shadow: 0 15px 35px var(--accent-glow);
         }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
         .card-icon {
-            width: 48px; height: 48px; border-radius: 12px;
-            background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.2);
+            width: 54px; height: 54px; border-radius: 14px;
+            background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.25);
             color: var(--accent-cyan); display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; margin-bottom: 20px;
+            font-size: 1.5rem;
         }
-        .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
+        .tag-active { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+        .tag-soon { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+
+        .card h3 { font-size: 1.45rem; margin-bottom: 12px; font-weight: 800; }
+        .card p { color: var(--text-muted); font-size: 0.98rem; margin-bottom: 28px; }
+        
         .card-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--accent-cyan); font-weight: 600; text-decoration: none; font-size: 0.9rem;
+            display: inline-flex; align-items: center; gap: 10px;
+            color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 0.95rem;
+            transition: 0.2s;
         }
-        .card-btn:hover { gap: 12px; text-shadow: 0 0 10px var(--accent-cyan); }
+        .card-btn:hover { gap: 14px; text-shadow: 0 0 12px var(--accent-cyan); }
     </style>
 </head>
 <body>
@@ -123,12 +168,14 @@
         <div class="container nav-wrap">
             <div class="logo">
                 <div class="logo-icon"><i class="fa-solid fa-server"></i></div>
-                <span>DataCenter<span style="color: var(--accent-cyan);">Vibe</span></span>
+                <div class="logo-text">DataCenter<span>Vibe</span></div>
             </div>
             <nav>
-                <a href="#suite">Herramientas</a>
+                <a href="#suite">Herramientas Scope</a>
                 <a href="#about">Manifiesto</a>
-                <a href="https://linkedin.com" target="_blank" class="btn-connect">LinkedIn Pro</a>
+                <a href="https://www.linkedin.com/in/albertoazzolinisbrana/" target="_blank" class="btn-linkedin">
+                    <i class="fa-brands fa-linkedin"></i> Alberto Azzolini
+                </a>
             </nav>
         </div>
     </header>
@@ -136,13 +183,13 @@
     <main class="container">
         <section class="hero-grid">
             <div>
-                <div class="badge"><span class="pulse-dot"></span> Next-Gen DCIM Hub</div>
+                <div class="badge"><span class="pulse-dot"></span> Next-Gen Infrastructure Suite</div>
                 <h1>Infraestructura Crítica <br><span class="gradient-txt">Optimizada con IA</span></h1>
                 <p class="hero-sub">
-                    Suite de utilidades para Data Centers desarrolladas mediante "Vibe Coding". Soluciones de gestión de activos, cálculo energéticos y automatización operativa.
+                    Suite de utilidades "Scope" para Data Centers desarrolladas mediante <strong>Vibe Coding</strong>. Soluciones visuales de gestión de activos, cálculo de eficiencia energética y analítica de costes operativos.
                 </p>
-                <a href="#suite" class="btn-connect" style="background: var(--accent-cyan); color: #000; padding: 12px 28px; font-size: 1rem;">
-                    Lanzar Herramientas <i class="fa-solid fa-arrow-right ml-2"></i>
+                <a href="#suite" class="btn-linkedin" style="background: var(--accent-cyan); color: #020617; display: inline-flex; font-size: 1.05rem; padding: 14px 32px;">
+                    Explorar Scope Suite <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
 
@@ -152,47 +199,68 @@
                     <div class="t-dot t-red"></div>
                     <div class="t-dot t-yellow"></div>
                     <div class="t-dot t-green"></div>
-                    <div class="t-title">vibe-dcim-engine v1.0.4</div>
+                    <div class="t-title">vibe-engine v2.0.1</div>
                 </div>
                 <div class="terminal-body">
-                    <div class="cmd-line"><span class="cmd-prompt">vibe@datacenter:~$</span> init_itracs_lite --mode=ai</div>
-                    <div class="cmd-out">✔ Conectando repositorio de activos... OK</div>
-                    <div class="cmd-out">✔ Mapeando unidades de Rack (U1 a U42)... OK</div>
-                    <div class="cmd-out">✔ Calculando redundancia N+1 de PDU... OK</div>
-                    <div class="cmd-line"><span class="cmd-prompt">vibe@datacenter:~$</span> <span style="color:#10b981;">MVP Listo para despliegue comunidad.</span></div>
+                    <div class="cmd-line"><span class="cmd-prompt">vibe@datacenter:~$</span> launch_module --tool=RackScope</div>
+                    <div class="cmd-out">✔ Cargando inventario de bastidores RACK-01..42... OK</div>
+                    <div class="cmd-out">✔ Mapeo visual de Slots & Patch Panels... OK</div>
+                    <div class="cmd-line"><span class="cmd-prompt">vibe@datacenter:~$</span> run_metrics --tool=PUEScope</div>
+                    <div class="cmd-out">✔ Calculando PUE en tiempo real (1.18 Target)... OK</div>
+                    <div class="cmd-line"><span class="cmd-prompt">vibe@datacenter:~$</span> <span style="color:#10b981;">Scope Suite lista para ejecución.</span></div>
                 </div>
             </div>
         </section>
 
         <section id="suite" style="padding-top: 40px;">
-            <h2 style="font-size: 2rem; margin-bottom: 8px;">Suite de Herramientas</h2>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">Selecciona un módulo para ejecutar en tiempo real:</p>
+            <h2 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 800;">Scope Suite</h2>
+            <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.05rem;">Selecciona el módulo operativo que deseas ejecutar:</p>
 
             <div class="cards-grid">
+                
+                <!-- RackScope (Antes iTRACS) -->
                 <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-sitemap"></i></div>
-                    <h3>iTRACS Lite (DCIM)</h3>
-                    <p>Mapeo inteligente de bastidores, gestión visual de slots en racks y trazabilidad de patch panels.</p>
-                    <a href="#" class="card-btn">Abrir Consola MVP <i class="fa-solid fa-chevron-right"></i></a>
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon"><i class="fa-solid fa-sitemap"></i></div>
+                            <span class="tag-active">MVP Disponible</span>
+                        </div>
+                        <h3>RackScope</h3>
+                        <p>Mapeo inteligente y visual de bastidores, gestión de espacio en rack (U's) y trazabilidad completa de potencia y conectividad.</p>
+                    </div>
+                    <a href="/rackscope/" class="card-btn">Lanzar RackScope <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
+                <!-- PUEScope -->
                 <div class="card">
-                    <div class="card-icon" style="color: #818cf8; border-color: rgba(129, 140, 248, 0.3); background: rgba(129, 140, 248, 0.1);">
-                        <i class="fa-solid fa-bolt-lightning"></i>
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon" style="color: #818cf8; border-color: rgba(129, 140, 248, 0.3); background: rgba(129, 140, 248, 0.1);">
+                                <i class="fa-solid fa-bolt-lightning"></i>
+                            </div>
+                            <span class="tag-soon">Próximamente</span>
+                        </div>
+                        <h3>PUEScope</h3>
+                        <p>Calculadora interactiva de eficiencia energética, estimación de PUE/WUE y simulación del impacto en sostenibilidad del Data Center.</p>
                     </div>
-                    <h3>Calculadora PUE / WUE</h3>
-                    <p>Evalúa el consumo energético y la eficiencia de refrigeración en función de la carga de IT en kW.</p>
-                    <a href="#" class="card-btn" style="color: #818cf8;">Próximamente <i class="fa-solid fa-chevron-right"></i></a>
+                    <span style="color: #64748b; font-size: 0.95rem; font-weight: 600;">En Desarrollo</span>
                 </div>
 
+                <!-- CostScope (Nueva) -->
                 <div class="card">
-                    <div class="card-icon" style="color: #c084fc; border-color: rgba(192, 132, 252, 0.3); background: rgba(192, 132, 252, 0.1);">
-                        <i class="fa-solid fa-user-shield"></i>
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.1);">
+                                <i class="fa-solid fa-coins"></i>
+                            </div>
+                            <span class="tag-soon">Próximamente</span>
+                        </div>
+                        <h3>CostScope</h3>
+                        <p>Herramienta para el análisis de TCO, costes operativos por rack/kW y proyección de gastos energéticos en infraestructura crítica.</p>
                     </div>
-                    <h3>DC Access Manager</h3>
-                    <p>Automatización de flujos de trabajo para solicitudes de entrada a salas frías y permisos de contratas.</p>
-                    <a href="#" class="card-btn" style="color: #c084fc;">Próximamente <i class="fa-solid fa-chevron-right"></i></a>
+                    <span style="color: #64748b; font-size: 0.95rem; font-weight: 600;">En Desarrollo</span>
                 </div>
+
             </div>
         </section>
     </main>
