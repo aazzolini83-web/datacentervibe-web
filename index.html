@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Center Vibe | AI-Powered Infrastructure Scope Suite</title>
+    <title>Data Center Vibe | Lightweight DCIM & Vibe Coding Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -13,6 +14,7 @@
             --accent-cyan: #06b6d4;
             --accent-green: #10b981;
             --accent-blue: #3b82f6;
+            --accent-amber: #f59e0b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -43,7 +45,7 @@
         }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
         
-        /* LOGO RETRO-TECH IMPONENTE */
+        /* LOGO RETRO-TECH */
         .logo { 
             display: flex; 
             align-items: center; 
@@ -77,7 +79,7 @@
         }
         .logo-title span { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan); }
 
-        nav { display: flex; gap: 32px; align-items: center; font-size: 0.95rem; font-weight: 600; }
+        nav { display: flex; gap: 28px; align-items: center; font-size: 0.95rem; font-weight: 600; }
         nav a { color: var(--text-muted); text-decoration: none; transition: 0.2s; }
         nav a:hover { color: var(--accent-cyan); }
         
@@ -85,7 +87,7 @@
             background: rgba(6, 182, 212, 0.1); 
             border: 1px solid var(--accent-cyan);
             color: var(--accent-cyan); 
-            padding: 10px 22px; 
+            padding: 10px 20px; 
             border-radius: 8px;
             font-weight: 700; 
             transition: all 0.3s ease;
@@ -115,7 +117,7 @@
 
         .hero-sub { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 36px; max-width: 600px; }
 
-        /* Terminal UI con Animación Typing */
+        /* Terminal UI with Typing Effect */
         .terminal {
             background: #030712; border: 1px solid rgba(6, 182, 212, 0.4);
             border-radius: 14px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
@@ -155,13 +157,13 @@
         .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
         .card-btn { display: inline-flex; align-items: center; gap: 10px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; }
 
-        /* SECCIÓN MANIFIESTO */
+        /* MANIFESTO SECTION */
         .manifesto-section {
             background: linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, rgba(2, 6, 23, 0.9) 100%);
             border: 1px solid rgba(51, 65, 85, 0.7);
             border-radius: 24px;
             padding: 60px 48px;
-            margin: 40px 0 100px;
+            margin: 40px 0 60px;
             position: relative;
             overflow: hidden;
         }
@@ -180,6 +182,40 @@
         .m-card i { font-size: 1.8rem; color: var(--accent-cyan); margin-bottom: 16px; }
         .m-card h4 { font-size: 1.2rem; margin-bottom: 10px; color: #f8fafc; font-weight: 700; }
         .m-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* DONATIONS / SPONSOR SECTION */
+        .sponsor-section {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px dashed rgba(245, 158, 11, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+        }
+        @media (max-width: 800px) { .sponsor-section { flex-direction: column; text-align: center; } }
+
+        .sponsor-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #020617;
+            font-weight: 800;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+            white-space: nowrap;
+        }
+        .sponsor-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
     </style>
 </head>
 <body>
@@ -191,8 +227,9 @@
                 <div class="logo-title">DataCenter<span>Vibe</span></div>
             </a>
             <nav>
-                <a href="#suite">Herramientas Scope</a>
-                <a href="#manifiesto">Manifiesto</a>
+                <a href="#suite">Scope Suite</a>
+                <a href="#purpose">Purpose</a>
+                <a href="#support">Support</a>
                 <a href="https://www.linkedin.com/in/albertoazzolinisbrana/" target="_blank" class="btn-linkedin">
                     <i class="fa-brands fa-linkedin"></i> Alberto Azzolini
                 </a>
@@ -204,17 +241,17 @@
         <!-- Hero Section -->
         <section class="hero-grid">
             <div>
-                <div class="badge"><span class="pulse-dot"></span> Vibe Coding Architecture</div>
-                <h1>Infraestructura Crítica <br><span class="gradient-txt">Optimizada con IA</span></h1>
+                <div class="badge"><span class="pulse-dot"></span> Lightweight DCIM & Infrastructure Engineering</div>
+                <h1>Critical Infrastructure. <br><span class="gradient-txt">Streamlined by Vibe Coding.</span></h1>
                 <p class="hero-sub">
-                    Hacemos los Data Centers más rentables y eficientes a través de herramientas modulares, ultra-escalables y desarrolladas mediante la agilidad del <strong>Vibe Coding</strong>.
+                    A modular suite of lightweight Data Center tools built to eliminate DCIM bloat. Start with an agile MVP, optimize rack footprint, and scale custom modules as your facility grows.
                 </p>
                 <a href="#suite" class="btn-linkedin" style="background: var(--accent-cyan); color: #020617; display: inline-flex; font-size: 1rem; padding: 14px 28px;">
-                    Explorar Scope Suite <i class="fa-solid fa-arrow-right"></i>
+                    Explore Scope Suite <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
 
-            <!-- Terminal Simulada Dinámica -->
+            <!-- Terminal UI -->
             <div class="terminal">
                 <div class="terminal-header">
                     <div class="t-dot t-red"></div>
@@ -223,15 +260,15 @@
                     <div class="t-title">vibe-engine v2.0.1</div>
                 </div>
                 <div class="terminal-body" id="terminal-content">
-                    <!-- El contenido interactivo se genera vía JS -->
+                    <!-- Typing sequence injected by JS -->
                 </div>
             </div>
         </section>
 
-        <!-- Suite Section -->
+        <!-- Scope Suite Section -->
         <section id="suite" style="padding-top: 20px;">
             <h2 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 800;">Scope Suite</h2>
-            <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.05rem;">Módulos especializados para optimizar tu infraestructura:</p>
+            <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.05rem;">Select an operational module to launch:</p>
 
             <div class="cards-grid">
                 
@@ -240,12 +277,12 @@
                     <div>
                         <div class="card-header">
                             <div class="card-icon"><i class="fa-solid fa-sitemap"></i></div>
-                            <span class="tag-active">MVP Disponible</span>
+                            <span class="tag-active">Available MVP</span>
                         </div>
                         <h3>RackScope</h3>
-                        <p>Mapeo inteligente y visual de bastidores, gestión de espacio en rack (U's) y trazabilidad completa de potencia y red.</p>
+                        <p>Clean, intuitive tracking for rack space (U's), patch panels, and equipment layout. Built to replace messy spreadsheets with a fast visual interface.</p>
                     </div>
-                    <a href="/rackscope/" class="card-btn">Lanzar RackScope <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="/rackscope/" class="card-btn">Launch RackScope <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <!-- PUEScope -->
@@ -255,12 +292,12 @@
                             <div class="card-icon" style="color: #818cf8; border-color: rgba(129, 140, 248, 0.3); background: rgba(129, 140, 248, 0.1);">
                                 <i class="fa-solid fa-bolt-lightning"></i>
                             </div>
-                            <span class="tag-soon">Próximamente</span>
+                            <span class="tag-soon">In Development</span>
                         </div>
                         <h3>PUEScope</h3>
-                        <p>Calculadora de eficiencia energética en tiempo real, estimación de PUE/WUE y auditoría de sostenibilidad del Data Center.</p>
+                        <p>Practical metrics for power consumption and cooling efficiency. Designed to help estimate PUE targets and highlight energy overhead.</p>
                     </div>
-                    <span style="color: #64748b; font-size: 0.95rem; font-weight: 600;">En Desarrollo</span>
+                    <span style="color: #64748b; font-size: 0.95rem; font-weight: 600;">Roadmap Module</span>
                 </div>
 
                 <!-- CostScope -->
@@ -270,60 +307,75 @@
                             <div class="card-icon" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.1);">
                                 <i class="fa-solid fa-coins"></i>
                             </div>
-                            <span class="tag-soon">Próximamente</span>
+                            <span class="tag-soon">In Development</span>
                         </div>
                         <h3>CostScope</h3>
-                        <p>Gestión avanzada de gastos operativos (OPEX/CAPEX), imputación de costes por rack/kW y modelado financiero de infraestructura.</p>
+                        <p>Financial visibility per rack and kilowatt. Model operational costs and plan capacity upgrades backed by clear infrastructure data.</p>
                     </div>
-                    <span style="color: #64748b; font-size: 0.95rem; font-weight: 600;">En Desarrollo</span>
+                    <span style="color: #64748b; font-size: 0.95rem; font-weight: 600;">Roadmap Module</span>
                 </div>
 
             </div>
         </section>
 
-        <!-- SECCIÓN MANIFIESTO -->
-        <section id="manifiesto" class="manifesto-section">
+        <!-- PURPOSE / MANIFESTO SECTION -->
+        <section id="purpose" class="manifesto-section">
             <div style="max-width: 750px;">
-                <span style="color: var(--accent-cyan); font-family: monospace; font-weight: 700; letter-spacing: 1px;">// NUESTRO PROPÓSITO</span>
-                <h2 style="font-size: 2.4rem; margin: 10px 0 16px; font-weight: 900;">El Manifiesto Data Center Vibe</h2>
+                <span style="color: var(--accent-cyan); font-family: monospace; font-weight: 700; letter-spacing: 1px;">// THE PURPOSE</span>
+                <h2 style="font-size: 2.4rem; margin: 10px 0 16px; font-weight: 900;">Keep it simple. Keep it profitable.</h2>
                 <p style="color: #cbd5e1; font-size: 1.15rem; line-height: 1.7;">
-                    El software tradicional para Data Centers (DCIM) se ha vuelto pesado, costoso y difícil de adaptar. Nuestro propósito es **hacer los Data Centers más rentables** eliminando la fricción operativa mediante aplicaciones ligeras, ultra-escalables y moldeadas a velocidad récord gracias al <strong>Vibe Coding</strong>.
+                    Traditional DCIM software has become overly complex, expensive, and slow to adapt. **Data Center Vibe** explores a different approach: lightweight, single-purpose applications crafted with **Vibe Coding** to solve core infrastructure bottlenecks without unnecessary friction.
                 </p>
             </div>
 
             <div class="manifesto-grid">
                 <div class="m-card">
                     <i class="fa-solid fa-chart-line"></i>
-                    <h4>Máxima Rentabilidad</h4>
-                    <p>Optimizamos el espacio en rack y la huella energética para exprimir cada euro de OPEX y extender la vida útil del Data Center.</p>
+                    <h4>Focus on OPEX Efficiency</h4>
+                    <p>Reduce wasted space and energy footprint through clean, accessible visual tools designed for real facility workflows.</p>
                 </div>
                 <div class="m-card">
                     <i class="fa-solid fa-bolt"></i>
-                    <h4>Agilidad Vibe Coding</h4>
-                    <p>Desarrollo iterativo potenciado por IA que permite pasar de un problema operativo a un módulo funcional (Scope) en cuestión de días.</p>
+                    <h4>Agile Vibe Coding</h4>
+                    <p>Rapidly turn operational pain points into functional, deployable web modules powered by modern AI-driven development.</p>
                 </div>
                 <div class="m-card">
                     <i class="fa-solid fa-cubes"></i>
-                    <h4>Modular & Adaptable</h4>
-                    <p>Sin bloatware. Implementa solo las herramientas que tu equipo necesita hoy (`RackScope`, `PUEScope`, `CostScope`), escalando a tu ritmo.</p>
+                    <h4>Modular & Scalable</h4>
+                    <p>No all-in-one monoliths. Deploy what you need today (`RackScope`), and adapt or build new modules as your facility grows.</p>
                 </div>
             </div>
         </section>
+
+        <!-- DONATIONS / SPONSOR SECTION -->
+        <section id="support" class="sponsor-section">
+            <div>
+                <span style="color: var(--accent-amber); font-family: monospace; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">// SUPPORT INDIE DEVELOPMENT</span>
+                <h3 style="font-size: 1.6rem; font-weight: 800; margin: 6px 0 8px;">Like this project? Support Data Center Vibe</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 650px;">
+                    This suite is developed as an independent initiative to streamline infrastructure operations. If `RackScope` or the Scope Suite helps your workflow, consider supporting its development!
+                </p>
+            </div>
+            <!-- Cambia el href por tu enlace real de BuyMeACoffee, Ko-fi o PayPal -->
+            <a href="https://www.buymeacoffee.com" target="_blank" class="sponsor-btn">
+                <i class="fa-solid fa-mug-hot"></i> Buy Me a Coffee
+            </a>
+        </section>
     </main>
 
-    <!-- Script para la Terminal en Movimiento (Typewriter Loop) -->
+    <!-- Script for Moving Terminal -->
     <script>
         const terminalContent = document.getElementById('terminal-content');
 
         const sequence = [
             { type: 'cmd', text: 'vibe@datacenter:~$ launch_module --tool=RackScope' },
-            { type: 'out', text: '✔ Cargando inventario de bastidores RACK-01..42... OK' },
-            { type: 'out', text: '✔ Mapeo visual de Slots & Patch Panels... OK' },
+            { type: 'out', text: '✔ Loading rack inventory RACK-01..42... OK' },
+            { type: 'out', text: '✔ Mapping visual Slots & Patch Panels... OK' },
             { type: 'cmd', text: 'vibe@datacenter:~$ run_metrics --tool=PUEScope' },
-            { type: 'out', text: '✔ Calculando PUE en tiempo real (1.18 Target)... OK' },
+            { type: 'out', text: '✔ Calculating real-time PUE (1.18 Target)... OK' },
             { type: 'cmd', text: 'vibe@datacenter:~$ run_audit --tool=CostScope' },
-            { type: 'out', text: '✔ Analizando optimización de OPEX/kW... OK' },
-            { type: 'success', text: '✔ Scope Suite lista para ejecución en tiempo real.' }
+            { type: 'out', text: '✔ Analyzing OPEX/kW optimization... OK' },
+            { type: 'success', text: '✔ Scope Suite ready for operation.' }
         ];
 
         async function playTerminal() {
@@ -363,11 +415,11 @@
                     line.style.paddingLeft = '16px';
                     line.textContent = step.text;
                     terminalContent.appendChild(line);
-                    await new Promise(r => setTimeout(r, 3000)); // Pausa final antes del loop
+                    await new Promise(r => setTimeout(r, 3000));
                 }
             }
             
-            playTerminal(); // Reiniciar el loop
+            playTerminal();
         }
 
         playTerminal();
