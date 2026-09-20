@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Center Vibe | Lightweight DCIM & Vibe Coding Suite</title>
     
+    <!-- Favicon SVG directo -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23020617'/><rect x='5' y='5' width='90' height='90' rx='15' fill='none' stroke='%2306b6d4' stroke-width='4'/><text x='50' y='65' font-family='monospace' font-weight='900' font-size='42' fill='%2310b981' text-anchor='middle'>%3E_</text></svg>">
+
     <!-- Open Graph Meta Tags para Redes Sociales / WhatsApp -->
     <meta property="og:title" content="Data Center Vibe | Lightweight DCIM & Vibe Coding Suite">
     <meta property="og:description" content="Modular suite of lightweight Data Center tools built to eliminate DCIM bloat. Optimize rack footprint and scale custom modules.">
@@ -58,39 +61,31 @@
         }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
         
-        /* LOGO RETRO-TECH */
+        /* LOGO NUEVO */
         .logo { 
             display: flex; 
             align-items: center; 
-            gap: 12px; 
+            gap: 10px; 
             text-decoration: none;
         }
         .logo-box {
-            background: #000;
-            border: 2px solid var(--accent-green);
-            color: var(--accent-green);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-weight: 900;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4), inset 0 0 8px rgba(16, 185, 129, 0.2);
-            text-shadow: 0 0 8px var(--accent-green);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            background: rgba(6, 182, 212, 0.1); 
+            border: 1px solid var(--accent-cyan); 
+            color: var(--accent-cyan); 
+            padding: 6px 10px; 
+            border-radius: 6px; 
+            font-family: var(--font-mono); 
+            font-weight: 800; 
+            font-size: 0.9rem;
         }
-        .logo-box i { font-size: 1rem; animation: blink 1.5s infinite; }
         .logo-title {
             font-family: var(--font-mono);
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: #fff;
             letter-spacing: -0.5px;
-            text-transform: uppercase;
         }
-        .logo-title span { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan); }
+        .logo-title span { color: var(--accent-cyan); }
 
         nav { display: flex; gap: 32px; align-items: center; font-size: 0.95rem; font-weight: 600; }
         nav a { color: var(--text-muted); text-decoration: none; transition: 0.2s; font-family: var(--font-mono); }
@@ -224,7 +219,7 @@
     <header>
         <div class="container nav-wrap">
             <a href="#" class="logo">
-                <div class="logo-box"><i class="fa-solid fa-terminal"></i> DCV</div>
+                <div class="logo-box">>_</div>
                 <div class="logo-title">DataCenter<span>Vibe</span></div>
             </a>
             <nav>
@@ -265,7 +260,7 @@
             </div>
         </section>
 
-        <!-- PURPOSE / MANIFESTO SECTION RETRO (Movidas aquí para mejorar la narrativa) -->
+        <!-- PURPOSE / MANIFESTO SECTION -->
         <section id="purpose" class="manifesto-section">
             <div style="max-width: 800px;">
                 <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 700; letter-spacing: 1px;">// SYSTEM MANIFESTO</span>
@@ -355,7 +350,20 @@
         </section>
     </main>
 
-    <!-- Script for Moving Terminal -->
+    <!-- Footer -->
+    <footer style="border-top: 1px solid var(--border-card); background: #01040d; padding: 40px 0; margin-top: 60px; color: var(--text-muted); font-size: 0.9rem;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <div style="font-family: var(--font-mono); color: #fff; font-weight: 700; margin-bottom: 4px;">DataCenterVibe</div>
+                <p style="font-size: 0.85rem;">Lightweight DCIM & Infrastructure Engineering Tools.</p>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.85rem;">
+                © 2026 datacentervibe.com • Built with Vibe Coding
+            </div>
+        </div>
+    </footer>
+
+    <!-- Terminal Script -->
     <script>
         const terminalContent = document.getElementById('terminal-content');
 
