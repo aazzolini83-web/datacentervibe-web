@@ -61,31 +61,45 @@
         }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
         
-        /* LOGO NUEVO */
+        /* LOGO CON MÁS PERSONALIDAD */
         .logo { 
             display: flex; 
             align-items: center; 
-            gap: 10px; 
+            gap: 12px; 
             text-decoration: none;
         }
         .logo-box {
-            background: rgba(6, 182, 212, 0.1); 
-            border: 1px solid var(--accent-cyan); 
-            color: var(--accent-cyan); 
-            padding: 6px 10px; 
-            border-radius: 6px; 
-            font-family: var(--font-mono); 
-            font-weight: 800; 
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(16, 185, 129, 0.15));
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.25);
+            transition: all 0.3s ease;
+        }
+        .logo:hover .logo-box {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 18px rgba(16, 185, 129, 0.4);
+            transform: translateY(-1px);
+        }
+        .logo-box i {
+            color: var(--accent-green);
             font-size: 0.9rem;
         }
         .logo-title {
             font-family: var(--font-mono);
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: #fff;
             letter-spacing: -0.5px;
         }
-        .logo-title span { color: var(--accent-cyan); }
+        .logo-title span { color: var(--accent-cyan); text-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
 
         nav { display: flex; gap: 32px; align-items: center; font-size: 0.95rem; font-weight: 600; }
         nav a { color: var(--text-muted); text-decoration: none; transition: 0.2s; font-family: var(--font-mono); }
@@ -219,7 +233,10 @@
     <header>
         <div class="container nav-wrap">
             <a href="#" class="logo">
-                <div class="logo-box">>_</div>
+                <div class="logo-box">
+                    <i class="fa-solid fa-server"></i>
+                    <span>DCV</span>
+                </div>
                 <div class="logo-title">DataCenter<span>Vibe</span></div>
             </a>
             <nav>
