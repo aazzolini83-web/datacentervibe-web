@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RackScope | DataCenterVibe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0b0f19; color: #e2e8f0; font-family: system-ui, -apple-system, sans-serif; }
+    .glow-effect { box-shadow: 0 0 20px rgba(59, 130, 246, 0.15); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Navigation -->
+  <nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 hover:opacity-80 transition">
+        <div class="w-9 h-9 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+          </svg>
+        </div>
+        <span class="font-bold text-xl tracking-tight text-white">DataCenter<span class="text-blue-500">Vibe</span></span>
+      </a>
+      <div class="flex items-center gap-6 text-sm text-slate-400">
+        <a href="/" class="hover:text-blue-400 transition">&larr; Back to Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-6 py-12 flex-1">
+    
+    <!-- Module Header -->
+    <div class="border-b border-slate-800 pb-8 mb-10">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="px-2.5 py-1 text-xs font-bold uppercase tracking-wider rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Module v1.0</span>
+        <span class="text-xs text-slate-500">Excel-Driven Visualization</span>
+      </div>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mb-4">RackScope</h1>
+      <p class="text-slate-400 text-lg max-w-3xl">
+        Transform static Excel spreadsheets into an interactive 2D Data Center Rack visualizer. No server, no complex DB setup—just run it directly in your browser.
+      </p>
+    </div>
+
+    <!-- UI Mockup Preview -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-12 glow-effect">
+      <div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-800 text-xs text-slate-400">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+          <span class="ml-2 font-mono">rackscope-preview.html</span>
+        </div>
+        <span>42U Standard View</span>
+      </div>
+      
+      <!-- Visual Simulation -->
+      <div class="grid md:grid-cols-3 gap-6 items-center">
+        <div class="md:col-span-1 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs">
+          <div class="text-slate-500 mb-2">// Sample Data Structure</div>
+          <div class="text-blue-400">Rack_ID: <span class="text-amber-300">"RK-A01"</span></div>
+          <div class="text-blue-400">U_Position: <span class="text-purple-400">40</span></div>
+          <div class="text-blue-400">Device: <span class="text-emerald-400">"Core Switch A"</span></div>
+          <div class="text-blue-400">Height: <span class="text-purple-400">2U</span></div>
+          <div class="text-blue-400">Power_kW: <span class="text-purple-400">1.2</span></div>
+        </div>
+
+        <div class="md:col-span-2 bg-slate-950 p-6 rounded-xl border border-slate-800 flex justify-center">
+          <!-- Simplified Rack Mock -->
+          <div class="w-48 bg-slate-900 border-2 border-slate-700 rounded p-2 flex flex-col gap-1">
+            <div class="bg-blue-600/30 border border-blue-500/50 text-[10px] text-blue-300 py-1.5 text-center rounded font-mono">U41-42: Core Switch A</div>
+            <div class="bg-slate-800/40 text-[9px] text-slate-600 py-1 text-center font-mono">U38-40: Empty</div>
+            <div class="bg-emerald-600/30 border border-emerald-500/50 text-[10px] text-emerald-300 py-3 text-center rounded font-mono">U34-37: SAN Storage</div>
+            <div class="bg-purple-600/30 border border-purple-500/50 text-[10px] text-purple-300 py-2 text-center rounded font-mono">U32-33: Compute Node 01</div>
+            <div class="bg-slate-800/40 text-[9px] text-slate-600 py-2 text-center font-mono">U01-31: Free Space</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How it works & Downloads -->
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      
+      <!-- Workflow -->
+      <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-white mb-4">How It Works</h3>
+        <ol class="space-y-4 text-sm text-slate-300 list-decimal list-inside">
+          <li><strong class="text-white">Fill the Excel template:</strong> Define device names, U heights, and power specs.</li>
+          <li><strong class="text-white">Load into RackScope:</strong> Open the HTML file in any browser and upload your spreadsheet.</li>
+          <li><strong class="text-white">Visual Analysis:</strong> Render rack layouts, check space availability, and monitor power distribution instantly.</li>
+        </ol>
+      </div>
+
+      <!-- Downloads -->
+      <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-bold text-white mb-2">Get Started</h3>
+          <p class="text-slate-400 text-sm mb-6">Download the base database template and the runner application.</p>
+        </div>
+        <div class="space-y-3">
+          <a href="#" class="w-full text-center block py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium rounded-lg border border-slate-700 transition">
+            &darr; Download Excel Template (.xlsx)
+          </a>
+          <a href="#" class="w-full text-center block py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition">
+            &darr; Download HTML App (RackScope.html)
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Vibe Coding Customization -->
+    <div class="bg-blue-950/20 border border-blue-500/20 rounded-xl p-6">
+      <h3 class="text-lg font-bold text-blue-400 mb-2">Vibe Coding Tip</h3>
+      <p class="text-slate-300 text-sm leading-relaxed mb-4">
+        Want to add custom fields like IP addresses or cable colors? Pass this HTML file to ChatGPT or Cursor along with this prompt:
+      </p>
+      <div class="bg-slate-950 p-4 rounded-lg text-xs font-mono text-slate-400 border border-slate-800">
+        "Modify this RackScope HTML to add a new column from my Excel file called 'Asset_Tag' and display it inside each U slot."
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+    <p>&copy; 2026 DataCenterVibe. Built for DC Engineers.</p>
+  </footer>
+
+</body>
+</html>
