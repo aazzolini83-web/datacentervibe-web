@@ -1,445 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Center Vibe | Lightweight DCIM & Vibe Coding Suite</title>
-    
-    <!-- Favicon SVG directo -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23020617'/><rect x='5' y='5' width='90' height='90' rx='15' fill='none' stroke='%2306b6d4' stroke-width='4'/><text x='50' y='65' font-family='monospace' font-weight='900' font-size='42' fill='%2310b981' text-anchor='middle'>%3E_</text></svg>">
-
-    <!-- Open Graph Meta Tags para Redes Sociales / WhatsApp -->
-    <meta property="og:title" content="Data Center Vibe | Lightweight DCIM & Vibe Coding Suite">
-    <meta property="og:description" content="Modular suite of lightweight Data Center tools built to eliminate DCIM bloat. Optimize rack footprint and scale custom modules.">
-    <meta property="og:image" content="https://datacentervibe.com/og-preview.png">
-    <meta property="og:url" content="https://datacentervibe.com">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Data Center Vibe | Lightweight DCIM">
-    <meta name="twitter:description" content="Modular suite of lightweight Data Center tools built to eliminate DCIM bloat.">
-    <meta name="twitter:image" content="https://datacentervibe.com/og-preview.png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-main: #020617;
-            --bg-card: rgba(15, 23, 42, 0.85);
-            --border-card: rgba(51, 65, 85, 0.7);
-            --accent-cyan: #06b6d4;
-            --accent-green: #10b981;
-            --accent-amber: #f59e0b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --font-mono: 'Consolas', 'Courier New', monospace;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.6;
-            min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.15) 0%, transparent 55%),
-                linear-gradient(to right, rgba(30, 41, 59, 0.25) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 41, 59, 0.25) 1px, transparent 1px);
-            background-size: 100% 100%, 48px 48px, 48px 48px;
-        }
-
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
-
-        /* Header Navigation */
-        header {
-            border-bottom: 1px solid rgba(51, 65, 85, 0.8);
-            background: rgba(2, 6, 23, 0.9);
-            backdrop-filter: blur(16px);
-            position: sticky; top: 0; z-index: 100;
-        }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
-        
-        /* LOGO CON MÁS PERSONALIDAD */
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            text-decoration: none;
-        }
-        .logo-box {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(16, 185, 129, 0.15));
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-family: var(--font-mono);
-            font-weight: 800;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 0 12px rgba(6, 182, 212, 0.25);
-            transition: all 0.3s ease;
-        }
-        .logo:hover .logo-box {
-            border-color: var(--accent-green);
-            box-shadow: 0 0 18px rgba(16, 185, 129, 0.4);
-            transform: translateY(-1px);
-        }
-        .logo-box i {
-            color: var(--accent-green);
-            font-size: 0.9rem;
-        }
-        .logo-title {
-            font-family: var(--font-mono);
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.5px;
-        }
-        .logo-title span { color: var(--accent-cyan); text-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
-
-        nav { display: flex; gap: 32px; align-items: center; font-size: 0.95rem; font-weight: 600; }
-        nav a { color: var(--text-muted); text-decoration: none; transition: 0.2s; font-family: var(--font-mono); }
-        nav a:hover { color: var(--accent-cyan); text-shadow: 0 0 8px var(--accent-cyan); }
-        
-        .btn-linkedin {
-            background: rgba(6, 182, 212, 0.1); 
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan); 
-            padding: 10px 20px; 
-            border-radius: 6px;
-            font-weight: 700; 
-            font-family: var(--font-mono);
-            transition: all 0.3s ease;
-            display: flex; align-items: center; gap: 8px;
-            text-decoration: none;
-        }
-        .btn-linkedin:hover { 
-            background: var(--accent-cyan); color: #020617; 
-            box-shadow: 0 0 25px var(--accent-cyan); transform: translateY(-2px);
-        }
-
-        /* Hero Grid */
-        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; padding: 70px 0 60px; }
-        @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
-
-        .badge-retro {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: rgba(0, 0, 0, 0.6); border: 1px solid var(--accent-green);
-            color: var(--accent-green); padding: 6px 14px; border-radius: 4px;
-            font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; margin-bottom: 24px;
-            letter-spacing: 0.05em; text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
-        }
-        .pulse-dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 10px var(--accent-green); }
-
-        h1 { font-size: 3.3rem; font-weight: 900; line-height: 1.1; margin-bottom: 22px; letter-spacing: -0.02em; }
-        .gradient-txt { background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .hero-sub { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 36px; max-width: 600px; }
-
-        /* Terminal UI */
-        .terminal {
-            background: #030712; border: 1px solid rgba(6, 182, 212, 0.5);
-            border-radius: 10px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 15px rgba(6, 182, 212, 0.15);
-            min-height: 290px;
-        }
-        .terminal-header {
-            background: #0f172a; padding: 12px 20px; display: flex; gap: 8px; align-items: center;
-            border-bottom: 1px solid var(--border-card);
-        }
-        .t-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .t-red { background: #ef4444; } .t-yellow { background: #f59e0b; } .t-green { background: #10b981; }
-        .t-title { margin-left: auto; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); }
-        .terminal-body { padding: 24px; font-family: var(--font-mono); font-size: 0.9rem; color: #38bdf8; min-height: 230px; }
-        
-        .cursor { display: inline-block; width: 8px; background-color: #38bdf8; margin-left: 2px; animation: blink 0.8s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* MANIFESTO / PURPOSE SECTION RETRO */
-        .manifesto-section {
-            background: #030712;
-            border: 1px solid var(--accent-cyan);
-            border-radius: 12px;
-            padding: 50px 40px;
-            margin: 20px 0 60px;
-            position: relative;
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.15), inset 0 0 15px rgba(6, 182, 212, 0.05);
-        }
-        .manifesto-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; margin-top: 40px; }
-        @media (max-width: 900px) { .manifesto-grid { grid-template-columns: 1fr; } .manifesto-section { padding: 32px 20px; } }
-        
-        .m-card-retro {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--border-card);
-            padding: 24px; border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        .m-card-retro:hover {
-            border-color: var(--accent-green);
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
-        }
-        .m-card-header {
-            display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
-        }
-        .m-card-header i { font-size: 1.4rem; color: var(--accent-cyan); }
-        .m-card-header h4 { font-size: 1.1rem; color: #f8fafc; font-weight: 700; font-family: var(--font-mono); }
-        .m-card-retro p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.5; }
-
-        /* Scope Cards Retro Style */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; padding: 30px 0 80px; }
-        .card-retro {
-            background: #050b18; border: 1px solid var(--border-card);
-            border-radius: 8px; padding: 32px; position: relative;
-            display: flex; flex-direction: column; justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-        .card-retro:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), inset 0 0 10px rgba(6, 182, 212, 0.05);
-            transform: translateY(-4px);
-        }
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-        .card-icon {
-            width: 46px; height: 46px; border-radius: 6px;
-            background: rgba(0, 0, 0, 0.5); border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan); display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
-        }
-        
-        /* Retro Status Badges */
-        .status-tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 4px;
-            letter-spacing: 1px;
-        }
-        .status-mvp { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); color: var(--accent-green); text-shadow: 0 0 5px var(--accent-green); }
-        .status-roadmap { background: rgba(245, 158, 11, 0.1); border: 1px solid var(--accent-amber); color: var(--accent-amber); }
-
-        .card-retro h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 800; font-family: var(--font-mono); color: #fff; }
-        .card-retro p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
-        .card-btn { display: inline-flex; align-items: center; gap: 10px; color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 700; text-decoration: none; }
-        .card-btn:hover { text-shadow: 0 0 8px var(--accent-cyan); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataCenterVibe | Lightweight DCIM Tools</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0b0f19; color: #e2e8f0; font-family: system-ui, -apple-system, sans-serif; }
+    .glow-effect { box-shadow: 0 0 20px rgba(59, 130, 246, 0.15); }
+    .glow-hover:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.3); border-color: #3b82f6; }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between">
 
-    <header>
-        <div class="container nav-wrap">
-            <a href="#" class="logo">
-                <div class="logo-box">
-                    <i class="fa-solid fa-server"></i>
-                    <span>DCV</span>
-                </div>
-                <div class="logo-title">DataCenter<span>Vibe</span></div>
-            </a>
-            <nav>
-                <a href="#purpose">>_ Purpose</a>
-                <a href="#suite">>_ Scope Suite</a>
-                <a href="https://www.linkedin.com/in/albertoazzolinisbrana/" target="_blank" class="btn-linkedin">
-                    <i class="fa-brands fa-linkedin"></i> Alberto Azzolini
-                </a>
-            </nav>
+  <!-- Navigation -->
+  <nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+          </svg>
         </div>
-    </header>
+        <span class="font-bold text-xl tracking-tight text-white">DataCenter<span class="text-blue-500">Vibe</span></span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-slate-400">
+        <a href="#about" class="hover:text-blue-400 transition">About</a>
+        <a href="#suite" class="hover:text-blue-400 transition">Scope Suite</a>
+        <a href="https://linkedin.com" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-800 text-slate-200 hover:bg-slate-700 transition">LinkedIn</a>
+      </div>
+    </div>
+  </nav>
 
-    <main class="container">
-        <!-- Hero Section -->
-        <section class="hero-grid">
-            <div>
-                <div class="badge-retro"><span class="pulse-dot"></span> [LIGHTWEIGHT DCIM & INFRASTRUCTURE ENGINEERING]</div>
-                <h1>Critical Infrastructure. <br><span class="gradient-txt">Streamlined by Vibe Coding.</span></h1>
-                <p class="hero-sub">
-                    A modular suite of lightweight Data Center tools built to eliminate DCIM bloat. Start with an agile MVP, optimize rack footprint, and scale custom modules as your facility grows.
-                </p>
-                <a href="/rackscope/" class="btn-linkedin" style="background: var(--accent-cyan); color: #020617; display: inline-flex; font-size: 1rem; padding: 12px 24px;">
-                    Launch RackScope MVP <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
+  <main class="max-w-6xl mx-auto px-6 py-12 flex-1">
+    
+    <!-- Hero Section -->
+    <section class="text-center py-12 border-b border-slate-800/80">
+      <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded-full">Vibe Coding for Infrastructure</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mt-4 mb-4 tracking-tight">Lightweight Open Tools for DC Ops</h1>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto">No heavy enterprise software, no complex databases. Visual, interactive tools that run directly in your browser using structured Excel files.</p>
+    </section>
 
-            <!-- Terminal UI -->
-            <div class="terminal">
-                <div class="terminal-header">
-                    <div class="t-dot t-red"></div>
-                    <div class="t-dot t-yellow"></div>
-                    <div class="t-dot t-green"></div>
-                    <div class="t-title">vibe-engine v2.0.1</div>
-                </div>
-                <div class="terminal-body" id="terminal-content">
-                    <!-- Typing sequence injected by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- PURPOSE / MANIFESTO SECTION -->
-        <section id="purpose" class="manifesto-section">
-            <div style="max-width: 800px;">
-                <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 700; letter-spacing: 1px;">// SYSTEM MANIFESTO</span>
-                <h2 style="font-size: 2.3rem; margin: 8px 0 16px; font-weight: 900; font-family: var(--font-mono);">Keep it simple. Keep it profitable.</h2>
-                <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.7;">
-                    Traditional DCIM software has become overly complex, expensive, and slow to adapt. <strong>Data Center Vibe</strong> explores a different approach: lightweight, single-purpose applications crafted with <strong>Vibe Coding</strong> to solve core infrastructure bottlenecks without unnecessary friction.
-                </p>
-            </div>
-
-            <div class="manifesto-grid">
-                <div class="m-card-retro">
-                    <div class="m-card-header">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <h4>01. OPEX Efficiency</h4>
-                    </div>
-                    <p>Reduce wasted space and energy footprint through clean, accessible visual tools designed for real facility workflows.</p>
-                </div>
-                <div class="m-card-retro">
-                    <div class="m-card-header">
-                        <i class="fa-solid fa-code"></i>
-                        <h4>02. Vibe Coding</h4>
-                    </div>
-                    <p>Rapidly turn operational pain points into functional, deployable web modules powered by modern AI-driven development.</p>
-                </div>
-                <div class="m-card-retro">
-                    <div class="m-card-header">
-                        <i class="fa-solid fa-cubes"></i>
-                        <h4>03. Modular Scale</h4>
-                    </div>
-                    <p>No all-in-one monoliths. Deploy what you need today (`RackScope`), and adapt or build new modules as your facility grows.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Scope Suite Section -->
-        <section id="suite" style="padding-top: 20px;">
-            <div style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700; margin-bottom: 4px;">// OPERATIONAL MODULES</div>
-            <h2 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 800; font-family: var(--font-mono);">Scope Suite</h2>
-            <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.05rem;">Select a tool to execute in environment:</p>
-
-            <div class="cards-grid">
-                
-                <!-- RackScope -->
-                <div class="card-retro">
-                    <div>
-                        <div class="card-header">
-                            <div class="card-icon"><i class="fa-solid fa-sitemap"></i></div>
-                            <span class="status-tag status-mvp">[ MVP_ONLINE ]</span>
-                        </div>
-                        <h3>RackScope</h3>
-                        <p>Clean, intuitive tracking for rack space (U's), patch panels, and equipment layout. Built to replace messy spreadsheets with a fast visual interface.</p>
-                    </div>
-                    <a href="/rackscope/" class="card-btn">Launch RackScope <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <!-- PUEScope -->
-                <div class="card-retro">
-                    <div>
-                        <div class="card-header">
-                            <div class="card-icon" style="color: #818cf8; border-color: #818cf8;">
-                                <i class="fa-solid fa-bolt-lightning"></i>
-                            </div>
-                            <span class="status-tag status-roadmap">[ IN_DEV ]</span>
-                        </div>
-                        <h3>PUEScope</h3>
-                        <p>Practical metrics for power consumption and cooling efficiency. Designed to help estimate PUE targets and highlight energy overhead.</p>
-                    </div>
-                    <span style="color: #64748b; font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600;">Roadmap Module</span>
-                </div>
-
-                <!-- CostScope -->
-                <div class="card-retro">
-                    <div>
-                        <div class="card-header">
-                            <div class="card-icon" style="color: var(--accent-green); border-color: var(--accent-green);">
-                                <i class="fa-solid fa-coins"></i>
-                            </div>
-                            <span class="status-tag status-roadmap">[ IN_DEV ]</span>
-                        </div>
-                        <h3>CostScope</h3>
-                        <p>Financial visibility per rack and kilowatt. Model operational costs and plan capacity upgrades backed by clear infrastructure data.</p>
-                    </div>
-                    <span style="color: #64748b; font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600;">Roadmap Module</span>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer style="border-top: 1px solid var(--border-card); background: #01040d; padding: 40px 0; margin-top: 60px; color: var(--text-muted); font-size: 0.9rem;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-            <div>
-                <div style="font-family: var(--font-mono); color: #fff; font-weight: 700; margin-bottom: 4px;">DataCenterVibe</div>
-                <p style="font-size: 0.85rem;">Lightweight DCIM & Infrastructure Engineering Tools.</p>
-            </div>
-            <div style="font-family: var(--font-mono); font-size: 0.85rem;">
-                © 2026 datacentervibe.com • Built with Vibe Coding
-            </div>
+    <!-- About Section -->
+    <section id="about" class="py-12 border-b border-slate-800/80">
+      <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-8 glow-effect flex flex-col md:flex-row items-center gap-8">
+        <img src="https://github.com/aazzolini83-web.png" alt="Profile" class="w-32 h-32 rounded-full border-2 border-blue-500/50 object-cover shadow-lg">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-1">DC Operations Specialist</h2>
+          <p class="text-blue-400 text-sm font-medium mb-4">Founder & Infrastructure Engineer</p>
+          <p class="text-slate-300 leading-relaxed">
+            After years working in Data Center infrastructure, I noticed teams constantly trapped between overly complex, expensive DCIM software and chaotic, unorganized Excel spreadsheets. DataCenterVibe is my approach to solving this gap: lightweight, browser-based visual tools built with Vibe Coding to eliminate daily operational friction.
+          </p>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- Terminal Script -->
-    <script>
-        const terminalContent = document.getElementById('terminal-content');
+    <!-- Scope Suite -->
+    <section id="suite" class="py-12">
+      <h2 class="text-2xl font-bold text-white mb-2">Scope Suite</h2>
+      <p class="text-slate-400 text-sm mb-8">Select a tool to view details, download templates, or launch in browser.</p>
 
-        const sequence = [
-            { type: 'cmd', text: 'vibe@datacenter:~$ launch_module --tool=RackScope' },
-            { type: 'out', text: '✔ Loading rack inventory RACK-01..42... OK' },
-            { type: 'out', text: '✔ Mapping visual Slots & Patch Panels... OK' },
-            { type: 'cmd', text: 'vibe@datacenter:~$ run_metrics --tool=PUEScope' },
-            { type: 'out', text: '✔ Calculating real-time PUE (1.18 Target)... OK' },
-            { type: 'cmd', text: 'vibe@datacenter:~$ run_audit --tool=CostScope' },
-            { type: 'out', text: '✔ Analyzing OPEX/kW optimization... OK' },
-            { type: 'success', text: '✔ Scope Suite ready for operation.' }
-        ];
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- RackScope -->
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 flex flex-col justify-between glow-hover transition duration-200">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Active Module</span>
+              <span class="text-xs text-slate-500">Excel Driven</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">RackScope</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Interactive rack layout visualization tool. Map rack space, power capacity, and server positions dynamically using a standard Excel database.
+            </p>
+          </div>
+          <a href="/rackscope/" class="w-full text-center py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-lg transition">
+            Explore RackScope &rarr;
+          </a>
+        </div>
 
-        async function playTerminal() {
-            terminalContent.innerHTML = '';
-            
-            for (let step of sequence) {
-                const line = document.createElement('div');
-                line.style.marginBottom = '8px';
-                
-                if (step.type === 'cmd') {
-                    line.innerHTML = `<span style="color:#818cf8;">${step.text.split(' ')[0]}</span> `;
-                    const cmdText = step.text.substring(step.text.indexOf(' ') + 1);
-                    const textSpan = document.createElement('span');
-                    const cursor = document.createElement('span');
-                    cursor.className = 'cursor';
-                    line.appendChild(textSpan);
-                    line.appendChild(cursor);
-                    terminalContent.appendChild(line);
+        <!-- PortScope (Coming Soon) -->
+        <div class="bg-slate-900/20 border border-slate-800/50 rounded-xl p-6 flex flex-col justify-between opacity-60">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-slate-800 text-slate-400">Coming Soon</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">PortScope</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Visual patching and port connectivity mapping. Track fiber and copper links end-to-end directly in the browser.
+            </p>
+          </div>
+          <button disabled class="w-full text-center py-2.5 bg-slate-800 text-slate-500 font-medium rounded-lg cursor-not-allowed">
+            In Development
+          </button>
+        </div>
 
-                    for (let char of cmdText) {
-                        textSpan.textContent += char;
-                        await new Promise(r => setTimeout(r, 35));
-                    }
-                    cursor.remove();
-                    await new Promise(r => setTimeout(r, 200));
+      </div>
+    </section>
 
-                } else if (step.type === 'out') {
-                    line.style.color = '#cbd5e1';
-                    line.style.paddingLeft = '16px';
-                    line.textContent = step.text;
-                    terminalContent.appendChild(line);
-                    await new Promise(r => setTimeout(r, 350));
+  </main>
 
-                } else if (step.type === 'success') {
-                    line.style.color = '#10b981';
-                    line.style.fontWeight = 'bold';
-                    line.style.paddingLeft = '16px';
-                    line.textContent = step.text;
-                    terminalContent.appendChild(line);
-                    await new Promise(r => setTimeout(r, 3000));
-                }
-            }
-            
-            playTerminal();
-        }
+  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+    <p>&copy; 2026 DataCenterVibe. Built for DC Engineers.</p>
+  </footer>
 
-        playTerminal();
-    </script>
 </body>
 </html>
