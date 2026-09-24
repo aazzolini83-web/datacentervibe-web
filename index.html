@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Center Vibe | Lightweight DCIM & Vibe Coding Suite</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Data Center Vibe | Downloadable Infrastructure MVPs</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
         :root {
             --bg-main: #020617;
             --bg-card: rgba(15, 23, 42, 0.85);
@@ -13,15 +14,17 @@
             --accent-cyan: #06b6d4;
             --accent-green: #10b981;
             --accent-amber: #f59e0b;
+            --accent-purple: #a855f7;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --font-mono: 'Consolas', 'Courier New', monospace;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: var(--font-sans);
             background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.6;
@@ -47,35 +50,43 @@
         .logo { 
             display: flex; 
             align-items: center; 
-            gap: 12px; 
+            gap: 16px; 
             text-decoration: none;
         }
         .logo-box {
-            background: #000;
+            background: #020617;
             border: 2px solid var(--accent-green);
             color: var(--accent-green);
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 8px 14px;
+            border-radius: 8px;
             font-family: var(--font-mono);
             font-weight: 900;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4), inset 0 0 8px rgba(16, 185, 129, 0.2);
-            text-shadow: 0 0 8px var(--accent-green);
+            font-size: 1.35rem;
+            letter-spacing: 1px;
+            box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .logo-box i { font-size: 1rem; animation: blink 1.5s infinite; }
+        .logo-box span.prompt-cmd {
+            color: var(--accent-green);
+            font-weight: 900;
+            animation: blink 1.2s infinite;
+        }
         .logo-title {
-            font-family: var(--font-mono);
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 1.85rem;
+            font-weight: 900;
+            color: #ffffff;
             letter-spacing: -0.5px;
             text-transform: uppercase;
         }
-        .logo-title span { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan); }
+        .logo-title span.gradient-logo { 
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+        }
 
         nav { display: flex; gap: 32px; align-items: center; font-size: 0.95rem; font-weight: 600; }
         nav a { color: var(--text-muted); text-decoration: none; transition: 0.2s; font-family: var(--font-mono); }
@@ -140,7 +151,7 @@
             background: #030712;
             border: 1px solid var(--accent-cyan);
             border-radius: 12px;
-            padding: 50px 40px;
+            padding: 45px 40px;
             margin: 20px 0 60px;
             position: relative;
             box-shadow: 0 0 25px rgba(6, 182, 212, 0.15), inset 0 0 15px rgba(6, 182, 212, 0.05);
@@ -165,8 +176,47 @@
         .m-card-header h4 { font-size: 1.1rem; color: #f8fafc; font-weight: 700; font-family: var(--font-mono); }
         .m-card-retro p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.5; }
 
+        /* Unified Single-Card Style for Transformation Section */
+        .unified-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-radius: 10px;
+            padding: 32px;
+            margin-top: 24px;
+            box-shadow: inset 0 0 15px rgba(16, 185, 129, 0.03);
+        }
+        .unified-card p {
+            color: #cbd5e1;
+            font-size: 1.08rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(51, 65, 85, 0.8);
+        }
+        .tag-pill {
+            background: rgba(2, 6, 23, 0.8);
+            border: 1px solid var(--border-card);
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            flex: 1 1 300px;
+        }
+        .tag-pill strong {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            margin-bottom: 4px;
+        }
+
         /* Scope Cards Retro Style */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; padding: 30px 0 100px; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; padding: 30px 0 100px; }
         .card-retro {
             background: #050b18; border: 1px solid var(--border-card);
             border-radius: 8px; padding: 32px; position: relative;
@@ -197,160 +247,268 @@
         .status-mvp { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); color: var(--accent-green); text-shadow: 0 0 5px var(--accent-green); }
         .status-roadmap { background: rgba(245, 158, 11, 0.1); border: 1px solid var(--accent-amber); color: var(--accent-amber); }
 
-        .card-retro h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 800; font-family: var(--font-mono); color: #fff; }
+        .card-retro h3 { font-size: 1.5rem; margin-bottom: 10px; font-weight: 850; font-family: var(--font-sans); color: #fff; letter-spacing: -0.02em; }
         .card-retro p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
         .card-btn { display: inline-flex; align-items: center; gap: 10px; color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 700; text-decoration: none; }
         .card-btn:hover { text-shadow: 0 0 8px var(--accent-cyan); }
-    </style>
+    
+        .card-btn-soon { color: var(--accent-amber); cursor: default; opacity: 0.9; }
+        .card-btn-soon:hover { text-shadow: none; }
+        .card-retro[data-release-state="soon"] { border-color: rgba(245, 158, 11, 0.28); }
+
+        /* Upcoming module mystery treatment */
+        .card-retro[data-release-state="soon"] {
+            overflow: hidden;
+            isolation: isolate;
+            cursor: default;
+            background:
+                radial-gradient(circle at 18% 20%, rgba(6,182,212,.13), transparent 34%),
+                radial-gradient(circle at 82% 78%, rgba(168,85,247,.12), transparent 32%),
+                linear-gradient(145deg, rgba(12,24,44,.96), rgba(5,11,24,.96));
+            border-color: rgba(245,158,11,.34);
+            box-shadow: inset 0 0 32px rgba(6,182,212,.035), 0 0 18px rgba(245,158,11,.055);
+        }
+        .card-retro[data-release-state="soon"]::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background: linear-gradient(115deg, rgba(3,10,24,.05), rgba(8,18,36,.18) 52%, rgba(3,8,20,.08));
+            backdrop-filter: blur(1.5px);
+        }
+        .card-retro[data-release-state="soon"] > div {
+            opacity: .78;
+            user-select: none;
+            pointer-events: none;
+        }
+        .card-retro[data-release-state="soon"] > div .card-icon,
+        .card-retro[data-release-state="soon"] > div h3,
+        .card-retro[data-release-state="soon"] > div p {
+            filter: blur(4.5px);
+            opacity: .52;
+        }
+        .card-retro[data-release-state="soon"] > div h3 {
+            text-shadow: 0 0 16px rgba(129,140,248,.32);
+        }
+        .card-retro[data-release-state="soon"] > div p {
+            opacity: .42;
+        }
+        .card-retro[data-release-state="soon"] .status-tag {
+            position: absolute;
+            top: 32px;
+            right: 32px;
+            z-index: 4;
+            filter: none;
+            opacity: 1;
+            user-select: text;
+        }
+        .card-retro[data-release-state="soon"] .card-btn-soon {
+            position: relative;
+            z-index: 4;
+            filter: none;
+            opacity: 1;
+            align-self: flex-start;
+            text-shadow: 0 0 10px rgba(245,158,11,.34);
+        }
+        .card-retro[data-release-state="soon"]:hover {
+            transform: none;
+            border-color: rgba(245,158,11,.46);
+            box-shadow: inset 0 0 32px rgba(6,182,212,.045), 0 0 20px rgba(245,158,11,.09);
+        }
+</style>
 </head>
 <body>
-
-    <header>
-        <div class="container nav-wrap">
-            <a href="#" class="logo">
-                <div class="logo-box"><i class="fa-solid fa-terminal"></i> DCV</div>
-                <div class="logo-title">DataCenter<span>Vibe</span></div>
-            </a>
-            <nav>
-                <a href="#purpose">>_ Purpose</a>
-                <a href="#suite">>_ Scope Suite</a>
-                <a href="https://www.linkedin.com/in/albertoazzolinisbrana/" target="_blank" class="btn-linkedin">
-                    <i class="fa-brands fa-linkedin"></i> Alberto Azzolini
+<header>
+<div class="container nav-wrap">
+<a class="logo" href="#">
+<div class="logo-box">
+<span class="prompt-cmd">&gt;_</span> DCV
+                </div>
+<div class="logo-title">DATA<span class="gradient-logo">CENTERVIBE</span></div>
+</a>
+<nav>
+<a href="#vibe-mvp">&gt;_ Transformation</a>
+<a href="#purpose">&gt;_ Purpose</a>
+<a href="#suite">&gt;_ Scope Suite</a>
+<a class="btn-linkedin" href="https://www.linkedin.com/in/albertoazzolinisbrana/" target="_blank">
+<i class="fa-brands fa-linkedin"></i> Alberto Azzolini
                 </a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
-        <!-- Hero Section -->
-        <section class="hero-grid">
-            <div>
-                <div class="badge-retro"><span class="pulse-dot"></span> [LIGHTWEIGHT DCIM & INFRASTRUCTURE ENGINEERING]</div>
-                <h1>Critical Infrastructure. <br><span class="gradient-txt">Streamlined by Vibe Coding.</span></h1>
-                <p class="hero-sub">
-                    A modular suite of lightweight Data Center tools built to eliminate DCIM bloat. Start with an agile MVP, optimize rack footprint, and scale custom modules as your facility grows.
+</nav>
+</div>
+</header>
+<main class="container">
+<!-- Hero Section -->
+<section class="hero-grid">
+<div>
+<div class="badge-retro"><span class="pulse-dot"></span> [LIGHTWEIGHT DCIM &amp; INFRASTRUCTURE ENGINEERING]</div>
+<h1>Critical Infrastructure. <br/><span class="gradient-txt">Streamlined by Vibe Coding.</span></h1>
+<p class="hero-sub">
+                    Download working Data Center MVPs, connect your operational data, and evolve each module around your own infrastructure through Vibe Coding.
                 </p>
-                <a href="#suite" class="btn-linkedin" style="background: var(--accent-cyan); color: #020617; display: inline-flex; font-size: 1rem; padding: 12px 24px;">
-                    Explore Scope Suite <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- Terminal UI -->
-            <div class="terminal">
-                <div class="terminal-header">
-                    <div class="t-dot t-red"></div>
-                    <div class="t-dot t-yellow"></div>
-                    <div class="t-dot t-green"></div>
-                    <div class="t-title">vibe-engine v2.0.1</div>
-                </div>
-                <div class="terminal-body" id="terminal-content">
-                    <!-- Typing sequence injected by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- PURPOSE / MANIFESTO SECTION RETRO (AHORA ARRIBA DE LA SUITE) -->
-        <section id="purpose" class="manifesto-section">
-            <div style="max-width: 800px;">
-                <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 700; letter-spacing: 1px;">// SYSTEM MANIFESTO</span>
-                <h2 style="font-size: 2.3rem; margin: 8px 0 16px; font-weight: 900; font-family: var(--font-mono);">Keep it simple. Keep it profitable.</h2>
-                <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.7;">
+<a class="btn-linkedin" href="#suite" style="background: var(--accent-cyan); color: #020617; display: inline-flex; font-size: 1rem; padding: 12px 24px;">
+                    Explore Downloadable MVPs <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+<!-- Terminal UI -->
+<div class="terminal">
+<div class="terminal-header">
+<div class="t-dot t-red"></div>
+<div class="t-dot t-yellow"></div>
+<div class="t-dot t-green"></div>
+<div class="t-title">vibe-engine v2.0.1</div>
+</div>
+<div class="terminal-body" id="terminal-content">
+<!-- Typing sequence injected by JS -->
+</div>
+</div>
+</section>
+<!-- THE DATA CENTER TRANSFORMATION SECTION (SINGLE MODULE) -->
+<section class="manifesto-section" id="vibe-mvp" style="border-color: var(--accent-green); box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);">
+<div style="max-width: 900px;">
+<span style="color: var(--accent-green); font-family: var(--font-mono); font-weight: 700; letter-spacing: 1px;">// CONCEPT DEFINITION</span>
+<h2 class="gradient-txt" style="font-size: 2.8rem; margin: 8px 0 12px; font-weight: 900; font-family: var(--font-sans);">
+                    The Data Center Transformation
+                </h2>
+</div>
+<div class="unified-card">
+<p>
+                    Combining <strong>Vibe Coding</strong> with the <strong>MVP</strong> mindset turns traditional infrastructure management — bogged down in static spreadsheets and information silos — into a living, scalable, and highly agile product. It lets engineers shift from reactive, manual operations to a disruptive workflow where raw data is automatically converted into real-time, interactive, and intelligible visual interfaces.
+                </p>
+<div class="concept-tags">
+<div class="tag-pill" style="border-color: rgba(6, 182, 212, 0.4);">
+<strong style="color: var(--accent-cyan);"><i class="fa-solid fa-code"></i> Vibe Coding</strong>
+<p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">AI-assisted development and engineering intuition combined to ship functional code at high speed, prioritizing direct problem-solving.</p>
+</div>
+<div class="tag-pill" style="border-color: rgba(168, 85, 247, 0.4);">
+<strong style="color: var(--accent-purple);"><i class="fa-solid fa-layer-group"></i> MVP (Minimum Viable Product)</strong>
+<p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">The leanest functional release delivering immediate value with minimal resources, built to validate and scale on real usage data.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- PURPOSE / MANIFESTO SECTION RETRO -->
+<section class="manifesto-section" id="purpose">
+<div style="max-width: 800px;">
+<span style="color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 700; letter-spacing: 1px;">// SYSTEM MANIFESTO</span>
+<h2 class="gradient-txt" style="font-size: 2.8rem; margin: 8px 0 16px; font-weight: 900; font-family: var(--font-sans);">Keep it simple. Keep it profitable.</h2>
+<p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.7;">
                     Traditional DCIM software has become overly complex, expensive, and slow to adapt. <strong>Data Center Vibe</strong> explores a different approach: lightweight, single-purpose applications crafted with <strong>Vibe Coding</strong> to solve core infrastructure bottlenecks without unnecessary friction.
                 </p>
-            </div>
-
-            <div class="manifesto-grid">
-                <div class="m-card-retro">
-                    <div class="m-card-header">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <h4>01. OPEX Efficiency</h4>
-                    </div>
-                    <p>Reduce wasted space and energy footprint through clean, accessible visual tools designed for real facility workflows.</p>
-                </div>
-                <div class="m-card-retro">
-                    <div class="m-card-header">
-                        <i class="fa-solid fa-code"></i>
-                        <h4>02. Vibe Coding</h4>
-                    </div>
-                    <p>Rapidly turn operational pain points into functional, deployable web modules powered by modern AI-driven development.</p>
-                </div>
-                <div class="m-card-retro">
-                    <div class="m-card-header">
-                        <i class="fa-solid fa-cubes"></i>
-                        <h4>03. Modular Scale</h4>
-                    </div>
-                    <p>No all-in-one monoliths. Deploy what you need today (`RackScope`), and adapt or build new modules as your facility grows.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Scope Suite Section (COLOCADO ABAJO) -->
-        <section id="suite" style="padding-top: 20px;">
-            <div style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700; margin-bottom: 4px;">// OPERATIONAL MODULES</div>
-            <h2 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 800; font-family: var(--font-mono);">Scope Suite</h2>
-            <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.05rem;">Select a tool to execute in environment:</p>
-
-            <div class="cards-grid">
-                
-                <!-- RackScope -->
-                <div class="card-retro">
-                    <div>
-                        <div class="card-header">
-                            <div class="card-icon"><i class="fa-solid fa-sitemap"></i></div>
-                            <span class="status-tag status-mvp">[ MVP_ONLINE ]</span>
-                        </div>
-                        <h3>RackScope</h3>
-                        <p>Clean, intuitive tracking for rack space (U's), patch panels, and equipment layout. Built to replace messy spreadsheets with a fast visual interface.</p>
-                    </div>
-                    <a href="/rackscope/" class="card-btn">Launch RackScope <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <!-- PUEScope -->
-                <div class="card-retro">
-                    <div>
-                        <div class="card-header">
-                            <div class="card-icon" style="color: #818cf8; border-color: #818cf8;">
-                                <i class="fa-solid fa-bolt-lightning"></i>
-                            </div>
-                            <span class="status-tag status-roadmap">[ IN_DEV ]</span>
-                        </div>
-                        <h3>PUEScope</h3>
-                        <p>Practical metrics for power consumption and cooling efficiency. Designed to help estimate PUE targets and highlight energy overhead.</p>
-                    </div>
-                    <span style="color: #64748b; font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600;">Roadmap Module</span>
-                </div>
-
-                <!-- CostScope -->
-                <div class="card-retro">
-                    <div>
-                        <div class="card-header">
-                            <div class="card-icon" style="color: var(--accent-green); border-color: var(--accent-green);">
-                                <i class="fa-solid fa-coins"></i>
-                            </div>
-                            <span class="status-tag status-roadmap">[ IN_DEV ]</span>
-                        </div>
-                        <h3>CostScope</h3>
-                        <p>Financial visibility per rack and kilowatt. Model operational costs and plan capacity upgrades backed by clear infrastructure data.</p>
-                    </div>
-                    <span style="color: #64748b; font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600;">Roadmap Module</span>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <script>
+</div>
+<div class="manifesto-grid">
+<div class="m-card-retro">
+<div class="m-card-header">
+<i class="fa-solid fa-chart-line"></i>
+<h4>01. OPEX Efficiency</h4>
+</div>
+<p>Reduce wasted space and energy footprint through clean, accessible visual tools designed for real facility workflows.</p>
+</div>
+<div class="m-card-retro">
+<div class="m-card-header">
+<i class="fa-solid fa-code"></i>
+<h4>02. Vibe Coding</h4>
+</div>
+<p>Rapidly turn operational pain points into functional, deployable web modules powered by modern AI-driven development.</p>
+</div>
+<div class="m-card-retro">
+<div class="m-card-header">
+<i class="fa-solid fa-cubes"></i>
+<h4>03. Modular Scale</h4>
+</div>
+<p>No all-in-one monoliths. Deploy what you need today (`RackScope`), and adapt or build new modules as your facility grows.</p>
+</div>
+</div>
+</section>
+<!-- Scope Suite Section -->
+<section id="suite" style="padding-top: 20px;">
+<div style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700; margin-bottom: 4px;">// OPERATIONAL MODULES</div>
+<h2 class="gradient-txt" style="font-size: 2.8rem; margin-bottom: 8px; font-weight: 900; font-family: var(--font-sans);">Scope Suite</h2>
+<p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.05rem;">Choose a working MVP, download the baseline, and shape the next version around your environment:</p>
+<div class="cards-grid">
+<!-- RackScope -->
+<div class="card-retro">
+<div>
+<div class="card-header">
+<div class="card-icon"><i class="fa-solid fa-sitemap"></i></div>
+<span class="status-tag status-mvp">[ MVP_ONLINE ]</span>
+</div>
+<h3>RackScope</h3>
+<p>Clean, intuitive tracking for rack space (U's), patch panels, and equipment layout. Built to replace messy spreadsheets with a fast visual interface.</p>
+</div>
+<a aria-disabled="false" class="card-btn" href="/rackscope/">Open RackScope <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<!-- AssetScope -->
+<div class="card-retro" data-release-state="soon">
+<div>
+<div class="card-header">
+<div class="card-icon" style="color: var(--accent-purple); border-color: var(--accent-purple);">
+<i class="fa-solid fa-boxes-stacked"></i>
+</div>
+<span class="status-tag status-roadmap">[ MVP_SOON ]</span>
+</div>
+<h3>AssetScope</h3>
+<p>Centralized inventory management for non-IT infrastructure equipment, technical assets, serial numbers, and hardware lifecycle tracking.</p>
+</div>
+<span aria-disabled="true" class="card-btn card-btn-soon">Coming Soon</span>
+</div>
+<!-- PUEScope -->
+<div class="card-retro" data-release-state="soon">
+<div>
+<div class="card-header">
+<div class="card-icon" style="color: #818cf8; border-color: #818cf8;">
+<i class="fa-solid fa-bolt-lightning"></i>
+</div>
+<span class="status-tag status-roadmap">[ MVP_SOON ]</span>
+</div>
+<h3>PUEScope</h3>
+<p>Practical metrics for power consumption and cooling efficiency. Designed to help estimate PUE targets and highlight energy overhead.</p>
+</div>
+<span aria-disabled="true" class="card-btn card-btn-soon">Coming Soon</span>
+</div>
+<!-- CostScope -->
+<div class="card-retro" data-release-state="soon">
+<div>
+<div class="card-header">
+<div class="card-icon" style="color: var(--accent-green); border-color: var(--accent-green);">
+<i class="fa-solid fa-coins"></i>
+</div>
+<span class="status-tag status-roadmap">[ MVP_SOON ]</span>
+</div>
+<h3>CostScope</h3>
+<p>Financial visibility per rack and kilowatt. Model operational costs and plan capacity upgrades backed by clear infrastructure data.</p>
+</div>
+<span aria-disabled="true" class="card-btn card-btn-soon">Coming Soon</span>
+</div>
+<!-- AuditScope -->
+<div class="card-retro" data-release-state="soon">
+<div>
+<div class="card-header">
+<div class="card-icon" style="color: var(--accent-amber); border-color: var(--accent-amber);">
+<i class="fa-solid fa-clipboard-check"></i>
+</div>
+<span class="status-tag status-roadmap">[ MVP_SOON ]</span>
+</div>
+<h3>AuditScope</h3>
+<p>Practical audit guidance and structured checklists for recurring Data Center assessments, evidence preparation, compliance reviews, and follow-up tracking.</p>
+</div>
+<span aria-disabled="true" class="card-btn card-btn-soon">Coming Soon</span>
+</div></div>
+</section>
+</main>
+<script>
         const terminalContent = document.getElementById('terminal-content');
 
         const sequence = [
             { type: 'cmd', text: 'vibe@datacenter:~$ launch_module --tool=RackScope' },
             { type: 'out', text: '✔ Loading rack inventory RACK-01..42... OK' },
-            { type: 'out', text: '✔ Mapping visual Slots & Patch Panels... OK' },
+            { type: 'cmd', text: 'vibe@datacenter:~$ launch_module --tool=AssetScope' },
+            { type: 'out', text: '✔ Syncing asset tags & serial numbers... OK' },
             { type: 'cmd', text: 'vibe@datacenter:~$ run_metrics --tool=PUEScope' },
             { type: 'out', text: '✔ Calculating real-time PUE (1.18 Target)... OK' },
             { type: 'cmd', text: 'vibe@datacenter:~$ run_audit --tool=CostScope' },
             { type: 'out', text: '✔ Analyzing OPEX/kW optimization... OK' },
-            { type: 'success', text: '✔ Scope Suite ready for operation.' }
+            { type: 'success', text: '✔ Scope Suite fully operational.' }
         ];
 
         async function playTerminal() {
