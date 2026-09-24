@@ -1,157 +1,48 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RackScope | Data Center Vibe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-main: #020617;
-            --bg-card: rgba(15, 23, 42, 0.85);
-            --border-card: rgba(51, 65, 85, 0.7);
-            --accent-cyan: #06b6d4;
-            --accent-green: #10b981;
-            --accent-amber: #f59e0b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --font-mono: 'Consolas', 'Courier New', monospace;
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>RackScope | Download. Adapt. Scale.</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+:root{--bg:#020617;--panel:#050b18;--panel2:#030712;--border:rgba(51,65,85,.72);--cyan:#06b6d4;--green:#10b981;--amber:#f59e0b;--purple:#a855f7;--text:#f8fafc;--muted:#94a3b8;--mono:'Consolas','Courier New',monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;background-image:radial-gradient(circle at 50% 0%,rgba(6,182,212,.15),transparent 55%),linear-gradient(to right,rgba(30,41,59,.25) 1px,transparent 1px),linear-gradient(to bottom,rgba(30,41,59,.25) 1px,transparent 1px);background-size:100% 100%,48px 48px,48px 48px}.container{max-width:1240px;margin:auto;padding:0 24px}
+header{border-bottom:1px solid rgba(51,65,85,.8);background:rgba(2,6,23,.9);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100}.nav-wrap{display:flex;justify-content:space-between;align-items:center;padding:18px 0}.logo{display:flex;align-items:center;gap:16px;text-decoration:none}.logo-box{background:#020617;border:2px solid var(--green);color:var(--green);padding:8px 14px;border-radius:8px;font-family:var(--mono);font-weight:900;font-size:1.35rem;box-shadow:0 0 16px rgba(16,185,129,.4)}.logo-box .prompt-cmd{animation:blink 1.2s infinite}.logo-title{font-size:1.85rem;font-weight:900;color:#fff;letter-spacing:-.5px}.gradient,.gradient-logo{background:linear-gradient(135deg,#38bdf8,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.gradient-logo{filter:drop-shadow(0 0 10px rgba(56,189,248,.4))}nav a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-weight:700}nav a:hover{color:var(--cyan)}@keyframes blink{50%{opacity:0}}
+.hero{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;padding:82px 0 62px}.badge,.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;font-weight:800}.badge{display:inline-flex;align-items:center;gap:10px;color:var(--green);border:1px solid var(--green);background:rgba(0,0,0,.55);padding:6px 14px;border-radius:4px;font-size:.8rem;margin-bottom:24px}.pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}h1{font-size:clamp(3.5rem,7vw,6.3rem);line-height:.92;letter-spacing:-.055em;margin-bottom:26px}h1 .product{display:block;color:#fff}h1 .claim{display:block}.hero-copy{max-width:650px;color:#cbd5e1;font-size:1.14rem;margin-bottom:30px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border-radius:6px;text-decoration:none;font-family:var(--mono);font-weight:800;border:1px solid var(--cyan);color:var(--cyan);background:rgba(6,182,212,.08);transition:.2s}.btn.primary{background:var(--cyan);color:#020617}.btn.green{border-color:var(--green);color:var(--green)}.btn:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(6,182,212,.3)}
+.hero-terminal{background:var(--panel2);border:1px solid rgba(6,182,212,.55);border-radius:10px;overflow:hidden;box-shadow:0 20px 45px rgba(0,0,0,.65),0 0 20px rgba(6,182,212,.12)}.term-head{display:flex;gap:8px;align-items:center;background:#0f172a;padding:12px 18px;border-bottom:1px solid var(--border)}.dot{width:11px;height:11px;border-radius:50%}.red{background:#ef4444}.yellow{background:#f59e0b}.green-dot{background:#10b981}.term-title{margin-left:auto;font-family:var(--mono);font-size:.78rem;color:var(--muted)}.term-body{padding:25px;font-family:var(--mono);font-size:.88rem;min-height:245px;color:#38bdf8}.term-body div{margin-bottom:9px}.term-out{color:#cbd5e1;padding-left:14px}.term-ok{color:var(--green);font-weight:800}
+.section{padding:58px 0}.section-head{max-width:780px;margin-bottom:26px}.eyebrow{color:var(--cyan);font-size:.8rem;margin-bottom:8px}.section h2{font-size:clamp(2.4rem,5vw,3.8rem);line-height:1;letter-spacing:-.04em;margin-bottom:15px}.section-intro{color:var(--muted);font-size:1.06rem}.download-panel{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;background:rgba(3,7,18,.9);border:1px solid var(--green);border-radius:12px;padding:28px;box-shadow:0 0 25px rgba(16,185,129,.12)}.download-copy h3{font-size:1.65rem;margin-bottom:8px}.download-copy p{color:var(--muted);max-width:640px}.download-actions{display:grid;gap:10px;align-content:center}.download-actions .btn{width:100%}
+.app-box{background:var(--panel2);border:1px solid var(--cyan);border-radius:12px;padding:24px;box-shadow:0 0 25px rgba(6,182,212,.13)}.preview-note{display:flex;justify-content:space-between;gap:20px;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:20px}.preview-note strong{font-size:1.08rem}.preview-note span{color:var(--muted);font-size:.92rem}.controls-bar{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;font-family:var(--mono);font-size:.85rem}.select-input{background:#000;border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;font-family:var(--mono)}.app-grid{display:grid;grid-template-columns:210px minmax(300px,1fr) 230px;gap:18px}.rack-selector-panel,.rack-view-panel,.metric-card{background:#000;border:1px solid var(--border);border-radius:7px}.rack-selector-panel{padding:14px;max-height:510px;overflow:auto}.panel-title{font-family:var(--mono);font-size:.75rem;color:var(--cyan);font-weight:800;margin-bottom:10px}.rack-item{padding:9px 10px;border:1px solid var(--border);border-radius:4px;margin-bottom:7px;cursor:pointer;font-family:var(--mono);font-size:.82rem;display:flex;justify-content:space-between}.rack-item:hover,.rack-item.active{border-color:var(--cyan);background:rgba(6,182,212,.1)}.rack-view-panel{padding:16px;display:flex;flex-direction:column;align-items:center}.rack-frame{width:100%;max-width:330px;background:var(--panel);border:3px solid #334155;border-radius:6px;padding:10px;display:flex;flex-direction:column;gap:1px}.u-slot{height:15px;background:rgba(255,255,255,.02);border:1px dashed rgba(51,65,85,.35);border-radius:2px;font-family:var(--mono);font-size:.58rem;padding:0 6px;display:flex;align-items:center;justify-content:space-between;color:var(--muted)}.u-slot.occupied{background:rgba(6,182,212,.15);border:1px solid var(--cyan);color:#fff;font-weight:700}.u-slot.occupied.patch{background:rgba(168,85,247,.15);border-color:var(--purple)}.info-panel{display:flex;flex-direction:column;gap:12px}.metric-card{padding:15px;font-family:var(--mono)}.metric-label{font-size:.7rem;color:var(--muted);text-transform:uppercase}.metric-value{font-size:1.28rem;font-weight:900;color:var(--green)}
+.prompt-shell{background:rgba(15,23,42,.58);border:1px solid var(--green);border-radius:12px;padding:24px;box-shadow:0 0 22px rgba(16,185,129,.08)}details{background:#020617;border:1px solid var(--border);border-radius:7px;margin-top:10px;overflow:hidden}summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;align-items:center;gap:14px;font-weight:800}summary::-webkit-details-marker{display:none}.prompt-num{font-family:var(--mono);color:var(--amber);font-size:.75rem}.prompt-desc{margin-left:auto;color:var(--muted);font-size:.85rem;font-weight:500}.prompt-content{border-top:1px solid var(--border);padding:16px 18px;background:#000;color:#38bdf8;font-family:var(--mono);font-size:.84rem}.copy-btn{margin-top:13px;border:1px solid var(--cyan);background:rgba(6,182,212,.09);color:var(--cyan);padding:8px 12px;border-radius:5px;font-family:var(--mono);font-weight:800;cursor:pointer}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{background:var(--panel);border:1px solid var(--border);padding:20px;border-radius:8px}.step b{display:block;color:var(--cyan);font-family:var(--mono);font-size:.78rem;margin-bottom:9px}.step h3{font-size:1.14rem;margin-bottom:6px}.step p{color:var(--muted);font-size:.9rem}.final-cta{text-align:center;padding:60px 24px 90px}.final-cta p{color:var(--muted);margin:12px auto 24px;max-width:660px}
+@media(max-width:960px){.hero,.download-panel{grid-template-columns:1fr}.app-grid{grid-template-columns:1fr}.rack-selector-panel{max-height:170px}.steps{grid-template-columns:1fr 1fr}.prompt-desc{display:none}}@media(max-width:640px){.logo-title{display:none}nav a{font-size:.78rem}.hero{padding-top:55px}h1{font-size:3.5rem}.hero-actions{display:grid}.steps{grid-template-columns:1fr}.preview-note{align-items:flex-start;flex-direction:column}}
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.6;
-            min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.15) 0%, transparent 55%),
-                linear-gradient(to right, rgba(30, 41, 59, 0.25) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 41, 59, 0.25) 1px, transparent 1px);
-            background-size: 100% 100%, 48px 48px, 48px 48px;
-        }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-        header {
-            border-bottom: 1px solid rgba(51, 65, 85, 0.8);
-            background: rgba(2, 6, 23, 0.9);
-            backdrop-filter: blur(16px);
-            position: sticky; top: 0; z-index: 100;
-        }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-box {
-            background: #000; border: 2px solid var(--accent-green); color: var(--accent-green);
-            padding: 8px 12px; border-radius: 6px; font-family: var(--font-mono); font-weight: 900;
-            font-size: 1.2rem; letter-spacing: 2px; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
-            display: flex; align-items: center; gap: 8px;
-        }
-        .logo-title { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 800; color: #fff; text-transform: uppercase; }
-        .logo-title span { color: var(--accent-cyan); }
-
-        nav a { color: var(--text-muted); text-decoration: none; font-family: var(--font-mono); font-weight: 600; transition: 0.2s; }
-        nav a:hover { color: var(--accent-cyan); }
-
-        .module-header { padding: 50px 0 30px; }
-        .status-mvp { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); color: var(--accent-green); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 16px; }
-        h1 { font-family: var(--font-mono); font-size: 2.8rem; font-weight: 900; margin-bottom: 12px; color: #fff; }
-        .sub { color: var(--text-muted); font-size: 1.1rem; max-width: 750px; }
-
-        /* Retro Preview Box */
-        .preview-box {
-            background: #030712; border: 1px solid var(--accent-cyan); border-radius: 10px;
-            padding: 30px; margin: 30px 0 50px;
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
-        }
-        .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
-        @media (max-width: 768px) { .preview-grid { grid-template-columns: 1fr; } }
-
-        .code-snippet { background: #000; border: 1px solid var(--border-card); padding: 20px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85rem; color: #38bdf8; }
-        .rack-visual { background: #000; border: 2px solid var(--border-card); padding: 15px; border-radius: 6px; display: flex; flex-direction: column; gap: 6px; }
-        .u-slot { background: rgba(6, 182, 212, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.8rem; padding: 8px; text-align: center; border-radius: 4px; }
-        .u-empty { background: rgba(255,255,255,0.02); border: 1px dashed var(--border-card); color: var(--text-muted); }
-
-        /* Grid Action */
-        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 60px; }
-        @media (max-width: 768px) { .action-grid { grid-template-columns: 1fr; } }
-
-        .retro-card { background: #050b18; border: 1px solid var(--border-card); padding: 30px; border-radius: 8px; }
-        .retro-card h3 { font-family: var(--font-mono); font-size: 1.3rem; margin-bottom: 12px; color: #fff; }
-        .retro-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
-
-        .btn-action {
-            display: inline-flex; align-items: center; gap: 10px; width: 100%; justify-content: center;
-            background: rgba(6, 182, 212, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan);
-            padding: 12px; border-radius: 6px; font-family: var(--font-mono); font-weight: 700; text-decoration: none;
-            transition: 0.2s; margin-bottom: 10px;
-        }
-        .btn-action:hover { background: var(--accent-cyan); color: #020617; box-shadow: 0 0 15px var(--accent-cyan); }
-
-        .vibe-note { background: rgba(16, 185, 129, 0.05); border: 1px solid var(--accent-green); padding: 20px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; color: #cbd5e1; margin-bottom: 80px; }
-    </style>
+/* RackScope Landing v3 */
+.nav-wrap{gap:24px}nav{display:flex;align-items:center;justify-content:flex-end;gap:20px;flex-wrap:wrap}nav a{font-size:.79rem;white-space:nowrap}nav .download-link{color:var(--green)}nav .back-home{padding-left:18px;border-left:1px solid var(--border)}
+.product-showcase{display:grid;grid-template-columns:1.18fr .82fr;gap:24px;align-items:stretch}.product-window{background:#020817;border:1px solid rgba(6,182,212,.62);border-radius:12px;overflow:hidden;box-shadow:0 22px 55px rgba(0,0,0,.5),0 0 24px rgba(6,182,212,.12)}.window-head{display:flex;align-items:center;gap:8px;padding:11px 15px;background:#0f172a;border-bottom:1px solid var(--border)}.window-title{margin-left:auto;font:700 .72rem var(--mono);color:var(--muted)}.product-ui{display:grid;grid-template-columns:150px 1fr;min-height:430px;background-image:linear-gradient(rgba(6,182,212,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(6,182,212,.045) 1px,transparent 1px);background-size:24px 24px}.mini-side{padding:18px 12px;background:rgba(2,8,23,.96);border-right:1px solid #15364f;display:flex;flex-direction:column}.mini-brand b,.mini-brand span{display:block;font-size:1.5rem;font-weight:950;line-height:.92}.mini-brand span{color:var(--cyan);margin-top:4px}.mini-nav{display:grid;gap:6px;margin-top:24px}.mini-nav i{font:normal 700 .66rem var(--mono);color:#8baabd;padding:7px;border:1px solid transparent;border-radius:4px}.mini-nav i.active{color:white;background:#071b2d;border-color:#0d7991}.mini-side>small{margin-top:auto;color:var(--green);font:700 .58rem var(--mono)}.mini-main{padding:20px}.mini-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.mini-top small{display:block;color:var(--green);font:700 .58rem var(--mono)}.mini-top strong{display:block;font-size:1.28rem;margin-top:6px}.mini-top strong span{color:var(--purple)}.mini-actions{font:800 .56rem var(--mono);background:var(--cyan);color:#00111a;padding:8px;border-radius:4px}.mini-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0}.mini-kpis div,.mini-panel{background:linear-gradient(145deg,rgba(11,23,41,.97),rgba(5,14,28,.97));border:1px solid #15364f;border-radius:6px;padding:11px}.mini-kpis small,.mini-panel small{color:#7ea0b7;font:700 .52rem var(--mono)}.mini-kpis b{display:block;font:850 1.25rem var(--mono);margin-top:5px}.mini-panels{display:grid;grid-template-columns:1.1fr .9fr;gap:9px}.mini-panel{height:180px}.mini-chart{height:130px;display:flex;align-items:flex-end;gap:9px;padding-top:16px}.mini-chart i{flex:1;background:linear-gradient(var(--purple),var(--cyan));border-radius:3px 3px 0 0;opacity:.85}.signal-lines{display:grid;gap:14px;margin-top:24px}.signal-lines i{display:block;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--cyan) 0 62%,#142537 62%)}.signal-lines i:nth-child(2){background:linear-gradient(90deg,var(--green) 0 78%,#142537 78%)}.signal-lines i:nth-child(3){background:linear-gradient(90deg,var(--purple) 0 46%,#142537 46%)}.signal-lines i:nth-child(4){background:linear-gradient(90deg,var(--amber) 0 68%,#142537 68%)}.capability-grid{display:grid;gap:10px}.capability-grid article{display:flex;gap:14px;align-items:flex-start;background:rgba(5,11,24,.92);border:1px solid var(--border);border-radius:8px;padding:14px;transition:.2s}.capability-grid article:hover{border-color:var(--cyan);transform:translateX(3px)}.capability-grid article>i{width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px;border:1px solid rgba(6,182,212,.55);border-radius:6px;color:var(--cyan);background:rgba(6,182,212,.08)}.capability-grid h3{font-size:.98rem;margin-bottom:3px}.capability-grid p{color:var(--muted);font-size:.82rem;line-height:1.42}
+@media(max-width:1120px){nav a:not(.download-link):not(.back-home){display:none}.product-showcase{grid-template-columns:1fr}.capability-grid{grid-template-columns:1fr 1fr}}@media(max-width:720px){nav .download-link{display:none}nav .back-home{border-left:0;padding-left:0}.product-ui{grid-template-columns:92px 1fr}.mini-nav i{font-size:0}.mini-nav i:before{content:'>_';font-size:.68rem}.mini-kpis{grid-template-columns:1fr 1fr}.mini-panels{grid-template-columns:1fr}.mini-panels .mini-panel:last-child{display:none}.capability-grid{grid-template-columns:1fr}.window-title{display:none}}
+</style>
 </head>
 <body>
-
-    <header>
-        <div class="container nav-wrap">
-            <a href="/" class="logo">
-                <div class="logo-box"><i class="fa-solid fa-terminal"></i> DCV</div>
-                <div class="logo-title">DataCenter<span>Vibe</span></div>
-            </a>
-            <nav>
-                <a href="/"><i class="fa-solid fa-arrow-left"></i> >_ Back to Home</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
-        <div class="module-header">
-            <span class="status-mvp">[ EXCEL-DRIVEN VISUALIZER ]</span>
-            <h1>RackScope</h1>
-            <p class="sub">Transform static Excel inventory spreadsheets into an interactive 2D Data Center Rack visualizer running directly in your browser.</p>
-        </div>
-
-        <div class="preview-box">
-            <div style="font-family: var(--font-mono); color: var(--accent-cyan); font-size: 0.85rem; margin-bottom: 15px;">// INTERFACE PREVIEW</div>
-            <div class="preview-grid">
-                <div class="code-snippet">
-                    <div style="color: #64748b;">// Excel DB Entry</div>
-                    <div>{</div>
-                    <div style="padding-left: 15px;">"Rack_ID": <span style="color: var(--accent-amber);">"RACK-A01"</span>,</div>
-                    <div style="padding-left: 15px;">"U_Pos": <span style="color: var(--accent-green);">40</span>,</div>
-                    <div style="padding-left: 15px;">"Device": <span style="color: #fff;">"Core Switch A"</span>,</div>
-                    <div style="padding-left: 15px;">"Height": <span style="color: var(--accent-green);">2U</span></div>
-                    <div>}</div>
-                </div>
-                <div class="rack-visual">
-                    <div class="u-slot">U41-42: Core Switch A</div>
-                    <div class="u-slot u-empty">U38-40: Free Space</div>
-                    <div class="u-slot" style="border-color: var(--accent-green); color: var(--accent-green); background: rgba(16, 185, 129, 0.1);">U34-37: SAN Storage</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="action-grid">
-            <div class="retro-card">
-                <h3>01. Workflow</h3>
-                <p>Define your server positions, heights, and rack slots in a standard Excel spreadsheet. Load the file directly in the web app without uploading data to external servers.</p>
-            </div>
-            <div class="retro-card">
-                <h3>02. Get Files</h3>
-                <p>Download the database template and runner file to execute locally or embed into your infrastructure workflow.</p>
-                <a href="#" class="btn-action"><i class="fa-solid fa-file-excel"></i> Download Excel Template (.xlsx)</a>
-                <a href="#" class="btn-action" style="border-color: var(--accent-green); color: var(--accent-green);"><i class="fa-solid fa-code"></i> Download RackScope App (.html)</a>
-            </div>
-        </div>
-
-        <div class="vibe-note">
-            <span style="color: var(--accent-green); font-weight: 700;">[ VIBE CODING CUSTOMIZATION ]</span><br>
-            Need custom columns like IP management or PDU tracking? Pass this file to ChatGPT or Cursor with: <br>
-            <span style="color: #fff;">"Add a new field from Excel called 'Asset_Tag' and render it inside each Rack U block."</span>
-        </div>
-    </main>
+<header><div class="container nav-wrap"><a class="logo" href="/"><div class="logo-box"><span class="prompt-cmd">&gt;_</span> DCV</div><div class="logo-title">DATA<span class="gradient-logo">CENTERVIBE</span></div></a><nav><a href="#overview">&gt;_ Overview</a><a class="download-link" href="#download">&gt;_ Download MVP</a><a href="#inside">&gt;_ Inside RackScope</a><a href="#prompts">&gt;_ Prompt Suite</a><a href="#workflow">&gt;_ How It Works</a><a class="back-home" href="/">← &gt;_ Back Home</a></nav></div></header>
+<main class="container">
+<section class="hero" id="overview"><div><div class="badge"><span class="pulse"></span>[ DOWNLOADABLE INFRASTRUCTURE MVP ]</div><h1><span class="product">RackScope.</span><span class="claim gradient">From spreadsheet to visual infrastructure.</span></h1><p class="hero-copy">Download a working MVP, connect your rack data, and keep evolving the interface around your own Data Center through Vibe Coding.</p><div class="hero-actions"><a class="btn primary" href="#download"><i class="fa-solid fa-code"></i> Download RackScope MVP</a><a class="btn green" href="#download"><i class="fa-solid fa-file-excel"></i> Download Dataset</a><a class="btn" href="#inside"><i class="fa-solid fa-layer-group"></i> Inside RackScope</a></div></div><div class="hero-terminal"><div class="term-head"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span><span class="term-title">rackscope-builder v1.0</span></div><div class="term-body"><div>&gt; load rackscope_mvp.html</div><div class="term-out">✔ Standalone interface ready</div><div>&gt; connect inventory.xlsx</div><div class="term-out">✔ Rack data mapped</div><div>&gt; adapt --environment=my-datacenter</div><div class="term-out">✔ Baseline ready for Vibe Coding</div><div class="term-ok">Download. Adapt. Scale.</div></div></div></section>
+<section class="section" id="download"><div class="download-panel"><div class="download-copy"><div class="eyebrow">// START WITH A WORKING BASELINE</div><h3>Take the MVP. Make it yours.</h3><p>RackScope runs as a standalone HTML application with an Excel-based dataset. Use the baseline as delivered, replace the demo data, or continue building modules for your own infrastructure.</p></div><div class="download-actions"><a class="btn primary" href="#"><i class="fa-solid fa-code"></i> Download Standalone RackScope (.html)</a><a class="btn green" href="#"><i class="fa-solid fa-file-excel"></i> Download Excel Dataset (.xlsx)</a></div></div></section>
+<section class="section" id="inside"><div class="section-head"><div class="eyebrow">// INSIDE THE RACKSCOPE MVP</div><h2>More than a rack viewer.<br/><span class="gradient">A working infrastructure baseline.</span></h2><p class="section-intro">The downloadable MVP combines physical capacity, asset inventory, cabling traceability, reporting and AI-assisted onboarding in one editable browser-based application.</p></div><div class="product-showcase"><div class="product-window"><div class="window-head"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span><span class="window-title">RackScope v4.2 · infrastructure console</span></div><div class="product-ui"><aside class="mini-side"><div class="mini-brand"><b>RACK</b><span>SCOPE</span></div><div class="mini-nav"><i class="active">&gt;_ Dashboard</i><i>&gt;_ Inventory</i><i>&gt;_ Room &amp; Racks</i><i>&gt;_ Power Feed</i><i>&gt;_ Cabling</i><i>&gt;_ CMDB Reports</i><i>&gt;_ Data Onboarding</i></div><small>● SYSTEM READY</small></aside><div class="mini-main"><div class="mini-top"><div><small>● [INFRASTRUCTURE SCOPE]</small><strong>Infrastructure. <span>Under control.</span></strong></div><div class="mini-actions">IMPORT EXCEL</div></div><div class="mini-kpis"><div><small>RACKS</small><b>20</b></div><div><small>ASSETS</small><b>184</b></div><div><small>OCCUPIED U</small><b>436</b></div><div><small>FREE U</small><b>404</b></div></div><div class="mini-panels"><div class="mini-panel"><small>// DATA CENTER OVERVIEW</small><div class="mini-chart"><i style="height:42%"></i><i style="height:65%"></i><i style="height:54%"></i><i style="height:82%"></i><i style="height:38%"></i><i style="height:70%"></i></div></div><div class="mini-panel"><small>// CMDB SIGNALS</small><div class="signal-lines"><i></i><i></i><i></i><i></i></div></div></div></div></div></div><div class="capability-grid"><article><i class="fa-solid fa-gauge-high"></i><div><h3>Infrastructure Dashboard</h3><p>Occupancy, free capacity, asset distribution and operational signals.</p></div></article><article><i class="fa-solid fa-building"></i><div><h3>Room &amp; Rack Navigation</h3><p>Room layout, rack rankings, row comparison and detailed 42U views.</p></div></article><article><i class="fa-solid fa-boxes-stacked"></i><div><h3>Inventory &amp; CMDB</h3><p>Searchable technical inventory, filters and downloadable reports.</p></div></article><article><i class="fa-solid fa-diagram-project"></i><div><h3>Cabling &amp; Ports</h3><p>Physical connections, port usage and endpoint traceability.</p></div></article><article><i class="fa-solid fa-server"></i><div><h3>Server &amp; Switch Views</h3><p>Device-level rear views generated from inventory and cabling data.</p></div></article><article><i class="fa-solid fa-wand-magic-sparkles"></i><div><h3>AI Data Onboarding</h3><p>Prompts, validation checks and controlled database migration preparation.</p></div></article></div></div></section>
+<section class="section" id="prompts"><div class="section-head"><div class="eyebrow">// VIBE CODING PROMPT SUITE</div><h2>Build what<br/><span class="gradient">comes next.</span></h2><p class="section-intro">Keep practical prompts close at hand without turning the landing into documentation. Open a use case, copy the prompt, and adapt the MVP.</p></div><div class="prompt-shell">
+<details><summary><span class="prompt-num">PROMPT 01</span>Map my existing Excel<span class="prompt-desc">Convert legacy inventory into RackScope format</span></summary><div class="prompt-content"><div class="prompt-text">Attached are two Excel files: File A (my legacy data center inventory) and File B (RackScope target format with columns: Rack_ID, U_Pos, Height, Device, Type, Power_kW). Write a Python script using pandas to map and populate File A into File B format automatically without losing device positions.</div><button class="copy-btn" onclick="copyPrompt(this)"><i class="fa-regular fa-copy"></i> Copy prompt</button></div></details>
+<details><summary><span class="prompt-num">PROMPT 02</span>Generate lifecycle reports<span class="prompt-desc">Compare monthly inventory changes</span></summary><div class="prompt-content"><div class="prompt-text">Write a script or function that compares this month's Excel inventory with last month's inventory to generate a report showing total Rack Units decommissioned, newly activated, and net capacity change per room.</div><button class="copy-btn" onclick="copyPrompt(this)"><i class="fa-regular fa-copy"></i> Copy prompt</button></div></details>
+<details><summary><span class="prompt-num">PROMPT 03</span>Add an MMR module<span class="prompt-desc">Extend fiber and cross-connect visibility</span></summary><div class="prompt-content"><div class="prompt-text">Modify this HTML interface to add a Meet-Me Room view with dedicated fiber patch-panel racks, fiber interconnect mapping, and a dashboard displaying port density and cross-connect availability.</div><button class="copy-btn" onclick="copyPrompt(this)"><i class="fa-regular fa-copy"></i> Copy prompt</button></div></details>
+<details><summary><span class="prompt-num">PROMPT 04</span>Move the dataset online<span class="prompt-desc">Evolve Excel into a cloud data layer</span></summary><div class="prompt-content"><div class="prompt-text">I want to convert this Excel sheet into an online cloud database. Show me how to migrate the data to Supabase (PostgreSQL) or Firebase, provide the database schema, and explain suitable hosting options for API access.</div><button class="copy-btn" onclick="copyPrompt(this)"><i class="fa-regular fa-copy"></i> Copy prompt</button></div></details>
+</div></section>
+<section class="section" id="workflow"><div class="section-head"><div class="eyebrow">// HOW IT WORKS</div><h2>Simple by design.</h2></div><div class="steps"><div class="step"><b>01 / DOWNLOAD</b><h3>Start working</h3><p>Take the standalone MVP and dataset as a clean baseline.</p></div><div class="step"><b>02 / POPULATE</b><h3>Connect your data</h3><p>Replace the demo inventory with the reality of your facility.</p></div><div class="step"><b>03 / ADAPT</b><h3>Vibe Code</h3><p>Use focused prompts to reshape workflows and views.</p></div><div class="step"><b>04 / SCALE</b><h3>Build your suite</h3><p>Add only the modules that your infrastructure actually needs.</p></div></div></section>
+<section class="final-cta"><div class="eyebrow">// YOUR DATA CENTER. YOUR VERSION.</div><h2>Download the baseline.<br/><span class="gradient">Build the rest.</span></h2><p>RackScope is not the finished destination. It is the working starting point for a visual infrastructure tool aligned with your environment.</p><a class="btn primary" href="#download"><i class="fa-solid fa-download"></i> Get RackScope MVP</a></section>
+</main>
+<script>
+function copyPrompt(button){const text=button.parentElement.querySelector('.prompt-text').innerText;navigator.clipboard.writeText(text).then(()=>{const old=button.innerHTML;button.innerHTML='<i class="fa-solid fa-check"></i> Copied';setTimeout(()=>button.innerHTML=old,1400)}).catch(()=>{button.innerText='Select and copy manually'})}
+</script>
+<!-- LOGICA RACKSCOPE SCRIPT -->
 
 </body>
 </html>
